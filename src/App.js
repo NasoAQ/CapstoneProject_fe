@@ -1,10 +1,10 @@
 import React from "react";
-import Navbar from "./components/Navbar";
+import MyNavbar from "./components/mynavbar/MyNavbar";
 
 function App() {
 	return (
 		<>
-			<Navbar />
+			<MyNavbar />
 		</>
 	);
 }
