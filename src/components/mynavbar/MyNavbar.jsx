@@ -1,15 +1,15 @@
 import React from "react";
-import { Navbar, Nav, Container } from "react-bootstrap";
+import { Navbar, Nav, Container, Image } from "react-bootstrap";
 
 const MyNavbar = () => {
 	return (
 		<Navbar expand="lg" className="bg-warning-subtle ">
 			<Container className="container-md">
 				<Navbar.Brand className="navbar-brand d-lg-none">
-					<img
+					<Image
 						src="https://raw.githubusercontent.com/NasoAQ/fe/main/src/Assets/LOGO.png"
 						width=""
-						height="100"
+						height={80}
 						//className="d-inline-block align-top"
 						alt="logo"
 					/>
@@ -19,10 +19,10 @@ const MyNavbar = () => {
 					<Nav className="mx-auto  align-items-center">
 						<Nav.Link href="/">Home</Nav.Link>
 						<Navbar.Brand className="px-5 d-none d-lg-block">
-							<img
+							<Image
 								src="https://raw.githubusercontent.com/NasoAQ/fe/main/src/Assets/LOGO.png"
 								width=""
-								height="100"
+								height={80}
 								//className="d-inline-block align-top"
 								alt="logo"
 							/>
