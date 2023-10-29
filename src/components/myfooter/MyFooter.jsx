@@ -11,11 +11,11 @@ import {
 
 const MyFooter = () => {
 	return (
-		<footer className="bg-dark-subtle text-dark text-lg-start mt-3">
+		<footer className="bg-dark-subtle text-dark text-lg-start mt-3 fixed-bottom">
 			<Container className=" container-md d-flex justify-content-start">
 				<Row className="pt-3 col-4 flex-nowrap">
 					<Col>
-						<h5>Our Company</h5>
+						<h5 className="text-warning-emphasis">Our Company</h5>
 						<p>
 							At vero eos et accusamus et iusto odio dignissimos ducimus qui
 							blanditiis praesentium voluptatum deleniti atque corrupti.
@@ -24,11 +24,11 @@ const MyFooter = () => {
 				</Row>
 				<Row className="pt-3 flex-end ms-auto">
 					<Col className="">
-						<h5>Our Contacts</h5>
+						<h5 className="text-warning-emphasis">Our Contacts</h5>
 						<ul>
 							<li className="mb-3">
 								<House />
-								<span className="ms-2">Warsaw, 00-967, Poland</span>
+								<span className="ms-2">L'Aquila, 67100, Italia</span>
 							</li>
 							<li className="mb-3">
 								<Envelope />
@@ -45,7 +45,12 @@ const MyFooter = () => {
 			<Container className=" container-md d-flex flex-nowrap justify-content-start bg-">
 				<Row className="py-3 col-2 flex-nowrap">
 					<Col>
-						<Linkedin />
+						<a
+							href="https://www.linkedin.com/in/gabriele-d-onofrio-46494563/"
+							target="blank"
+						>
+							<Linkedin color="black" />
+						</a>
 					</Col>
 					<Col>
 						<Github />

@@ -3,7 +3,7 @@ import { Navbar, Nav, Container, Image } from "react-bootstrap";
 
 const MyNavbar = () => {
 	return (
-		<Navbar expand="lg" className="bg-warning-subtle ">
+		<Navbar expand="lg" className="bg-light border-bottom">
 			<Container className="container-md">
 				<Navbar.Brand className="navbar-brand d-lg-none">
 					<Image
@@ -14,8 +14,11 @@ const MyNavbar = () => {
 						alt="logo"
 					/>
 				</Navbar.Brand>
-				<Navbar.Toggle aria-controls="basic-navbar-nav" />
-				<Navbar.Collapse id="basic-navbar-nav">
+				<Navbar.Toggle
+					aria-controls="basic-navbar-nav"
+					className="border-0 p-0"
+				/>
+				<Navbar.Collapse id="basic-navbar-nav" className="border-0">
 					<Nav className="mx-auto  align-items-center">
 						<Nav.Link href="/">Home</Nav.Link>
 						<Navbar.Brand className="px-5 d-none d-lg-block">
