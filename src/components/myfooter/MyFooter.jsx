@@ -11,7 +11,7 @@ import {
 
 const MyFooter = () => {
 	return (
-		<footer className="bg-dark-subtle text-dark text-lg-start mt-3 fixed-bottom">
+		<footer className="bg-dark-subtle text-dark text-lg-start mt-3">
 			<Container className=" container-md d-flex justify-content-start">
 				<Row className="pt-3 col-4 flex-nowrap">
 					<Col>

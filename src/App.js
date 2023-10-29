@@ -1,10 +1,16 @@
 import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainLayouts from "./layouts/MainLayouts";
+import Admin from "./pages/Admin";
 
 function App() {
 	return (
 		<>
-			<MainLayouts></MainLayouts>
+			<BrowserRouter>
+				<Routes>
+					<Route path="/admin" element={<Admin />} />
+				</Routes>
+			</BrowserRouter>
 		</>
 	);
 }
