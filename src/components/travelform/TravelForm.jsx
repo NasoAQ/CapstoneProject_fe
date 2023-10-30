@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Form } from "react-bootstrap";
 import { PlusCircleFill } from "react-bootstrap-icons";
+import TravelTable from "../traveltable/TravelTable";
 
 const TravelForm = () => {
 	const [file, setFile] = useState(null);
-	const [formData, setFormData] = useState({ value: "", unit: "" });
+	const [formData, setFormData] = useState({
+		title: "",
+		category: "",
+		price: "",
+		content: "",
+	});
 	const [travels, setTravels] = useState([]);
 	const [totalTravels, setTotalTravels] = useState(0);
 
@@ -51,13 +57,40 @@ const TravelForm = () => {
 						body: JSON.stringify(finalBody),
 					}
 				);
-
+				setFormData({
+					title: "",
+					category: "",
+					cover: "",
+					price: "",
+					content: "",
+				});
+				setFile(null);
 				return response.json();
 			} catch (error) {
 				console.log(error);
 			}
 		} else {
 			console.error("Seleziona un file");
+		}
+	};
+
+	const handleDeleteTravel = async id => {
+		try {
+			const response = await fetch(
+				`${process.env.REACT_APP_SERVER_BASE_URL}/travels/delete/${id}`,
+				{
+					method: "DELETE",
+				}
+			);
+
+			if (response.status === 200) {
+				const updatedTravels = travels.filter(travel => travel._id !== id);
+				setTravels(updatedTravels);
+			} else {
+				console.error("Errore durante l'eliminazione del viaggio");
+			}
+		} catch (error) {
+			console.error("Errore durante l'eliminazione del viaggio", error);
 		}
 	};
 
@@ -89,6 +122,7 @@ const TravelForm = () => {
 							placeholder="Title"
 							aria-label="Title"
 							className="form-control form-control-sm"
+							value={formData.title}
 							onChange={e =>
 								setFormData({
 									...formData,
@@ -103,24 +137,11 @@ const TravelForm = () => {
 							placeholder="Category"
 							aria-label="Category"
 							className="form-control form-control-sm"
+							value={formData.category}
 							onChange={e =>
 								setFormData({
 									...formData,
 									category: e.target.value,
-								})
-							}
-						/>
-					</Col>
-					<Col>
-						<input
-							type="text"
-							placeholder="Content"
-							aria-label="Content"
-							className="form-control form-control-sm"
-							onChange={e =>
-								setFormData({
-									...formData,
-									content: e.target.value,
 								})
 							}
 						/>
@@ -142,6 +163,7 @@ const TravelForm = () => {
 							aria-label="price"
 							min={1}
 							className="form-control form-control-sm"
+							value={formData.price}
 							onChange={e =>
 								setFormData({
 									...formData,
@@ -150,13 +172,31 @@ const TravelForm = () => {
 							}
 						/>
 					</Col>
-					<Col>
-						<button type="submit" className="btn btn-primary btn-sm">
-							<PlusCircleFill />
-						</button>
-					</Col>
+					<Row className="my-2">
+						<Col>
+							<input
+								type="text"
+								placeholder="Content"
+								aria-label="Content"
+								className="form-control form-control-sm"
+								value={formData.content}
+								onChange={e =>
+									setFormData({
+										...formData,
+										content: e.target.value,
+									})
+								}
+							/>
+						</Col>
+						<Col className="d-flex justify-content-end px-0">
+							<button type="submit" className="btn btn-primary">
+								<PlusCircleFill />
+							</button>
+						</Col>
+					</Row>
 				</Row>
 			</Form>
+			<TravelTable travels={travels} onDelete={handleDeleteTravel} />
 		</Container>
 	);
 };
