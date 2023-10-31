@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Form } from "react-bootstrap";
-import { PlusCircleFill } from "react-bootstrap-icons";
+import {
+	XCircleFill,
+	PlusCircleFill,
+	PencilSquare,
+} from "react-bootstrap-icons";
 import TravelTable from "../traveltable/TravelTable";
 
 const TravelForm = () => {
@@ -10,12 +14,13 @@ const TravelForm = () => {
 		category: "",
 		price: "",
 		content: "",
+		cover: "",
 	});
 	const [travels, setTravels] = useState([]);
 	const [totalTravels, setTotalTravels] = useState(0);
+	const [editingTravel, setEditingTravel] = useState(null);
 
 	const onChangeSetFile = e => {
-		console.log(e.target.files);
 		setFile(e.target.files[0]);
 	};
 
@@ -39,10 +44,13 @@ const TravelForm = () => {
 	const onSubmit = async e => {
 		e.preventDefault();
 
+		if (editingTravel) {
+			return;
+		}
+
 		if (file) {
 			try {
 				const uploadCover = await uploadFile(file);
-				console.log(uploadCover);
 				const finalBody = {
 					...formData,
 					cover: uploadCover.cover,
@@ -94,6 +102,69 @@ const TravelForm = () => {
 		}
 	};
 
+	const handleEdit = async travel => {
+		setEditingTravel(travel);
+		setFormData({
+			title: travel.title,
+			category: travel.category,
+			price: travel.price,
+			content: travel.content,
+		});
+		if (editingTravel) {
+			try {
+				const uploadCover = await uploadFile(file);
+				const finalBody = {
+					...formData,
+					cover: uploadCover.cover,
+				};
+				const response = await fetch(
+					`${process.env.REACT_APP_SERVER_BASE_URL}/travels/update/${editingTravel._id}`,
+					{
+						headers: {
+							"Content-Type": "application/json",
+						},
+						method: "PATCH",
+						body: JSON.stringify(finalBody),
+					}
+				);
+
+				if (response.status === 200) {
+					// Aggiorna la lista dei viaggi dopo la modifica
+					const updatedTravels = travels.map(travel =>
+						travel._id === editingTravel._id
+							? { ...travel, ...finalBody }
+							: travel
+					);
+					setTravels(updatedTravels);
+
+					// Resetta il form di modifica
+					setEditingTravel(null);
+					setFormData({
+						title: "",
+						category: "",
+						price: "",
+						content: "",
+					});
+				} else {
+					console.error("Errore durante la modifica del viaggio");
+				}
+			} catch (error) {
+				console.error("Errore durante la modifica del viaggio", error);
+			}
+		}
+	};
+
+	const handleCancelEdit = () => {
+		setEditingTravel(null);
+		setFormData({
+			title: "",
+			category: "",
+			price: "",
+			content: "",
+			cover: "",
+		});
+	};
+
 	useEffect(() => {
 		// Effettua la richiesta GET ai viaggi quando il componente si monta
 		fetch(`${process.env.REACT_APP_SERVER_BASE_URL}/travels`)
@@ -122,7 +193,7 @@ const TravelForm = () => {
 							placeholder="Title"
 							aria-label="Title"
 							className="form-control form-control-sm"
-							value={formData.title}
+							value={formData.title || ""}
 							onChange={e =>
 								setFormData({
 									...formData,
@@ -137,7 +208,7 @@ const TravelForm = () => {
 							placeholder="Category"
 							aria-label="Category"
 							className="form-control form-control-sm"
-							value={formData.category}
+							value={formData.category || ""}
 							onChange={e =>
 								setFormData({
 									...formData,
@@ -163,7 +234,7 @@ const TravelForm = () => {
 							aria-label="price"
 							min={1}
 							className="form-control form-control-sm"
-							value={formData.price}
+							value={formData.price || ""}
 							onChange={e =>
 								setFormData({
 									...formData,
@@ -179,7 +250,7 @@ const TravelForm = () => {
 								placeholder="Content"
 								aria-label="Content"
 								className="form-control form-control-sm"
-								value={formData.content}
+								value={formData.content || ""}
 								onChange={e =>
 									setFormData({
 										...formData,
@@ -189,14 +260,37 @@ const TravelForm = () => {
 							/>
 						</Col>
 						<Col className="d-flex justify-content-end px-0">
-							<button type="submit" className="btn btn-primary">
-								<PlusCircleFill />
-							</button>
+							{editingTravel ? (
+								<div>
+									<button
+										type="button"
+										className="btn btn-secondary btn-sm mx-2"
+										onClick={handleCancelEdit}
+									>
+										<XCircleFill />
+									</button>
+									<button
+										type="submit"
+										className="btn btn-warning btn-sm mr-2"
+										onClick={handleEdit}
+									>
+										<PencilSquare />
+									</button>
+								</div>
+							) : (
+								<button type="submit" className="btn btn-primary btn-sm">
+									<PlusCircleFill />
+								</button>
+							)}
 						</Col>
 					</Row>
 				</Row>
 			</Form>
-			<TravelTable travels={travels} onDelete={handleDeleteTravel} />
+			<TravelTable
+				travels={travels}
+				onDelete={handleDeleteTravel}
+				onEdit={handleEdit}
+			/>
 		</Container>
 	);
 };

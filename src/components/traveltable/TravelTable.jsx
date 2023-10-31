@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { XCircleFill, PencilSquare } from "react-bootstrap-icons";
+import { PencilSquare, Trash3Fill } from "react-bootstrap-icons";
 
-const TravelTable = ({ travels, onDelete }) => {
+const TravelTable = ({ travels, onDelete, onEdit }) => {
 	const [travelList, setTravelList] = useState(travels);
 	const totalTravels = travels.length;
 
@@ -14,6 +14,10 @@ const TravelTable = ({ travels, onDelete }) => {
 		} catch (error) {
 			console.error("Errore durante l'eliminazione del viaggio", error);
 		}
+	};
+
+	const handleEdit = travel => {
+		onEdit(travel);
 	};
 
 	return (
@@ -66,7 +70,11 @@ const TravelTable = ({ travels, onDelete }) => {
 								)}
 							</td>
 							<td>
-								<button type="submit" className="btn btn-warning btn-sm">
+								<button
+									type="submit"
+									className="btn btn-warning btn-sm"
+									onClick={() => handleEdit(travel)}
+								>
 									<PencilSquare />
 								</button>
 							</td>
@@ -76,7 +84,7 @@ const TravelTable = ({ travels, onDelete }) => {
 									className="btn btn-danger btn-sm"
 									onClick={() => handleDelete(travel._id)}
 								>
-									<XCircleFill />
+									<Trash3Fill color="black" />
 								</button>
 							</td>
 						</tr>
