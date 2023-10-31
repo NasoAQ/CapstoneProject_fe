@@ -22,7 +22,9 @@ const TravelTable = ({ travels, onDelete, onEdit }) => {
 
 	return (
 		<div>
-			<p>Sono presenti {totalTravels} viaggi</p>
+			<p className="text-warning-emphasis">
+				Sono presenti {totalTravels} viaggi
+			</p>
 			<table className="table my-3">
 				<thead>
 					<tr>

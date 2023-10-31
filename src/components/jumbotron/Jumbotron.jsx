@@ -3,12 +3,13 @@ import { Card } from "react-bootstrap";
 
 const Jumbotron = () => {
 	return (
-		<Card className="bg-dark text-white">
+		<Card className=" text-white border-0 rounded-0">
 			<Card.Img
-				src="10f5a5d25e2808a8a47ee054a2698af9 (1).jpg"
+				src="https://hannahfielding.net/wp-content/uploads/2021/02/Egypt-desert.jpg"
 				alt="Card image"
+				className="rounded-0 opacity-75"
 			/>
-			<Card.ImgOverlay>
+			<Card.ImgOverlay className="text-center text-white my-5 pt-5 border-0 rounded-0">
 				<Card.Title>Card title</Card.Title>
 				<Card.Text>
 					This is a wider card with supporting text below as a natural lead-in
