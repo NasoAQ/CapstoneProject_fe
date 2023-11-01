@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import ResponsivePagination from "react-responsive-pagination";
+import "react-responsive-pagination/themes/classic.css";
 import { Container, Row, Col, Form } from "react-bootstrap";
 import {
 	XCircleFill,
@@ -18,6 +20,7 @@ const TravelForm = () => {
 	});
 	const [travels, setTravels] = useState([]);
 	const [totalTravels, setTotalTravels] = useState(0);
+	const [currentPage, setCurrentPage] = useState(1);
 	const [editingTravel, setEditingTravel] = useState(null);
 
 	const onChangeSetFile = e => {
@@ -165,9 +168,15 @@ const TravelForm = () => {
 		});
 	};
 
+	const handlePagination = value => {
+		setCurrentPage(value);
+	};
+
 	useEffect(() => {
 		// Effettua la richiesta GET ai viaggi quando il componente si monta
-		fetch(`${process.env.REACT_APP_SERVER_BASE_URL}/travels`)
+		fetch(
+			`${process.env.REACT_APP_SERVER_BASE_URL}/travels?page=${currentPage}`
+		)
 			.then(response => response.json())
 			.then(data => {
 				if (data.travels) {
@@ -178,120 +187,129 @@ const TravelForm = () => {
 			.catch(error => {
 				console.error("Errore durante la richiesta GET", error);
 			});
-	}, [totalTravels]);
+	}, [totalTravels, currentPage]);
 
 	return (
-		<Container className="my-3 py-1 bg-light border-bottom">
-			<Row>
-				<h5 className="text-warning-emphasis">Gestione travels</h5>
-			</Row>
-			<Form onSubmit={onSubmit}>
-				<Row encType="multipart/form-data">
-					<Col>
-						<input
-							type="text"
-							placeholder="Title"
-							aria-label="Title"
-							className="form-control form-control-sm"
-							value={formData.title || ""}
-							onChange={e =>
-								setFormData({
-									...formData,
-									title: e.target.value,
-								})
-							}
-						/>
-					</Col>
-					<Col>
-						<input
-							type="text"
-							placeholder="Category"
-							aria-label="Category"
-							className="form-control form-control-sm"
-							value={formData.category || ""}
-							onChange={e =>
-								setFormData({
-									...formData,
-									category: e.target.value,
-								})
-							}
-						/>
-					</Col>
-					<Col>
-						<input
-							type="file"
-							placeholder="Cover"
-							aria-label="Cover"
-							className="form-control form-control-sm"
-							name="cover"
-							onChange={onChangeSetFile}
-						/>
-					</Col>
-					<Col>
-						<input
-							type="number"
-							placeholder="price"
-							aria-label="price"
-							min={1}
-							className="form-control form-control-sm"
-							value={formData.price || ""}
-							onChange={e =>
-								setFormData({
-									...formData,
-									price: e.target.value,
-								})
-							}
-						/>
-					</Col>
-					<Row className="my-2">
+		<>
+			<Container className="my-3 py-1 bg-light border-bottom">
+				<Row>
+					<h5 className="text-warning-emphasis">Gestione travels</h5>
+				</Row>
+				<Form onSubmit={onSubmit}>
+					<Row encType="multipart/form-data">
 						<Col>
 							<input
 								type="text"
-								placeholder="Content"
-								aria-label="Content"
+								placeholder="Title"
+								aria-label="Title"
 								className="form-control form-control-sm"
-								value={formData.content || ""}
+								value={formData.title || ""}
 								onChange={e =>
 									setFormData({
 										...formData,
-										content: e.target.value,
+										title: e.target.value,
 									})
 								}
 							/>
 						</Col>
-						<Col className="d-flex justify-content-end px-0">
-							{editingTravel ? (
-								<div>
-									<button
-										type="button"
-										className="btn btn-secondary btn-sm mx-2"
-										onClick={handleCancelEdit}
-									>
-										<XCircleFill />
-									</button>
-									<button
-										type="submit"
-										className="btn btn-warning btn-sm mr-2"
-										onClick={handleEdit}
-									>
-										<PencilSquare />
-									</button>
-								</div>
-							) : (
-								<button type="submit" className="btn btn-primary btn-sm">
-									<PlusCircleFill />
-								</button>
-							)}
+						<Col>
+							<input
+								type="text"
+								placeholder="Category"
+								aria-label="Category"
+								className="form-control form-control-sm"
+								value={formData.category || ""}
+								onChange={e =>
+									setFormData({
+										...formData,
+										category: e.target.value,
+									})
+								}
+							/>
 						</Col>
+						<Col>
+							<input
+								type="file"
+								placeholder="Cover"
+								aria-label="Cover"
+								className="form-control form-control-sm"
+								name="cover"
+								onChange={onChangeSetFile}
+							/>
+						</Col>
+						<Col>
+							<input
+								type="number"
+								placeholder="price"
+								aria-label="price"
+								min={1}
+								className="form-control form-control-sm"
+								value={formData.price || ""}
+								onChange={e =>
+									setFormData({
+										...formData,
+										price: e.target.value,
+									})
+								}
+							/>
+						</Col>
+						<Row className="my-2">
+							<Col>
+								<input
+									type="text"
+									placeholder="Content"
+									aria-label="Content"
+									className="form-control form-control-sm"
+									value={formData.content || ""}
+									onChange={e =>
+										setFormData({
+											...formData,
+											content: e.target.value,
+										})
+									}
+								/>
+							</Col>
+							<Col className="d-flex justify-content-end px-0">
+								{editingTravel ? (
+									<div>
+										<button
+											type="button"
+											className="btn btn-secondary btn-sm mx-2"
+											onClick={handleCancelEdit}
+										>
+											<XCircleFill />
+										</button>
+										<button
+											type="submit"
+											className="btn btn-warning btn-sm mr-2"
+											onClick={handleEdit}
+										>
+											<PencilSquare />
+										</button>
+									</div>
+								) : (
+									<button type="submit" className="btn btn-primary btn-sm">
+										<PlusCircleFill />
+									</button>
+								)}
+							</Col>
+						</Row>
 					</Row>
-				</Row>
-			</Form>
-			<TravelTable
-				travels={travels}
-				onDelete={handleDeleteTravel}
-				onEdit={handleEdit}
-			/>
-		</Container>
+				</Form>
+				<TravelTable
+					travels={travels}
+					onDelete={handleDeleteTravel}
+					onEdit={handleEdit}
+				/>
+			</Container>
+			<Container className="mt-3">
+				<ResponsivePagination
+					current={currentPage}
+					total={travels && travels.totalPages}
+					onPageChange={handlePagination}
+				/>
+			</Container>
+		</>
 	);
 };
 

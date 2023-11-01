@@ -1,0 +1,13 @@
+.mycard {
+	opacity: 0.5;
+	transition: opacity 1s;
+}
+
+.mycard:hover {
+	opacity: 1;
+	cursor: pointer;
+}
+
+.mytitle:hover {
+	cursor: pointer;
+}
