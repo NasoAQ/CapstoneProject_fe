@@ -1,8 +1,16 @@
-import React, { useEffect, useState } from "react";
-import { Container, Col } from "react-bootstrap";
+import React from "react";
+import { Container } from "react-bootstrap";
+import CardCategory from "../cardcategory/CardCategory";
 
 const LatestTravels = () => {
-	return <div>HELLO</div>;
+	return (
+		<>
+			<Container id="adventures" className="my-5 fst-italic">
+				<h2 className="text-center text-warning-emphasis">Latest Adventures</h2>
+				<CardCategory />
+			</Container>
+		</>
+	);
 };
 
 export default LatestTravels;

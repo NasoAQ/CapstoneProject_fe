@@ -1,6 +1,6 @@
 .mycard {
 	opacity: 0.5;
-	transition: opacity 1s;
+	transition: opacity 0.5s;
 }
 
 .mycard:hover {
@@ -8,6 +8,10 @@
 	cursor: pointer;
 }
 
-.mytitle:hover {
-	cursor: pointer;
+.mytitle {
+	transition: text-shadow 0.5s;
+}
+
+.mycard:hover .mytitle {
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }

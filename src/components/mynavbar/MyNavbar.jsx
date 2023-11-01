@@ -1,5 +1,6 @@
 import React from "react";
 import { Navbar, Nav, Container, Image } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const MyNavbar = () => {
 	return (
@@ -21,6 +22,7 @@ const MyNavbar = () => {
 				<Navbar.Collapse id="basic-navbar-nav" className="border-0">
 					<Nav className="mx-auto  align-items-center">
 						<Nav.Link href="/">Home</Nav.Link>
+						<Nav.Link href="/">Adventures</Nav.Link>
 						<Navbar.Brand className="px-5 d-none d-lg-block">
 							<Image
 								src="https://raw.githubusercontent.com/NasoAQ/fe/main/src/Assets/LOGO.png"
@@ -31,6 +33,7 @@ const MyNavbar = () => {
 							/>
 						</Navbar.Brand>
 
+						<Nav.Link href="#testimonials">Testimonials</Nav.Link>
 						<Nav.Link href="#link">Link</Nav.Link>
 					</Nav>
 				</Navbar.Collapse>
