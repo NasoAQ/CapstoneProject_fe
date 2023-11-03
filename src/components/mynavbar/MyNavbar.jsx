@@ -1,10 +1,10 @@
 import React from "react";
 import { Navbar, Nav, Container, Image } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const MyNavbar = () => {
 	return (
-		<Navbar expand="lg" className="bg-light border-bottom">
+		<Navbar expand="lg" className="bg-light border-bottom nav-underline">
 			<Container className="container-md">
 				<Navbar.Brand className="navbar-brand d-lg-none">
 					<Image
@@ -21,8 +21,12 @@ const MyNavbar = () => {
 				/>
 				<Navbar.Collapse id="basic-navbar-nav" className="border-0">
 					<Nav className="mx-auto  align-items-center">
-						<Nav.Link href="/">Home</Nav.Link>
-						<Nav.Link href="/">Adventures</Nav.Link>
+						<Nav.Link as={NavLink} to="/" exact="true">
+							Home
+						</Nav.Link>
+						<Nav.Link as={NavLink} to="/category">
+							Adventures
+						</Nav.Link>
 						<Navbar.Brand className="px-5 d-none d-lg-block">
 							<Image
 								src="https://raw.githubusercontent.com/NasoAQ/fe/main/src/Assets/LOGO.png"

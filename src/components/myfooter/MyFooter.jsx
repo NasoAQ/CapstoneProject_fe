@@ -11,7 +11,7 @@ import {
 
 const MyFooter = () => {
 	return (
-		<footer className="bg-dark-subtle text-dark text-lg-start mt-3">
+		<footer className="bg-secondary-subtle text-dark text-lg-start mt-3">
 			<Container className=" container-md d-flex justify-content-start">
 				<Row className="pt-3 col-4 flex-nowrap">
 					<Col>
@@ -42,7 +42,7 @@ const MyFooter = () => {
 					</Col>
 				</Row>
 			</Container>
-			<Container className=" container-md d-flex flex-nowrap justify-content-start bg-">
+			<Container className=" container-md d-flex flex-nowrap justify-content-start ">
 				<Row className="py-3 col-2 flex-nowrap">
 					<Col>
 						<a
