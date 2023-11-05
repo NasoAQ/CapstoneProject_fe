@@ -19,7 +19,7 @@ const TravelForm = () => {
 		cover: "",
 	});
 	const [travels, setTravels] = useState([]);
-	const [totalTravels, setTotalTravels] = useState(0);
+	const [totalPages, setTotalPages] = useState(0);
 	const [currentPage, setCurrentPage] = useState(1);
 	const [editingTravel, setEditingTravel] = useState(null);
 
@@ -181,17 +181,17 @@ const TravelForm = () => {
 			.then(data => {
 				if (data.travels) {
 					setTravels(data.travels);
-					setTotalTravels(data.totalTravels);
+					setTotalPages(data.totalPages);
 				}
 			})
 			.catch(error => {
 				console.error("Errore durante la richiesta GET", error);
 			});
-	}, [totalTravels, currentPage]);
+	}, [currentPage]);
 
 	return (
 		<>
-			<Container className="my-3 py-1 bg-light border-bottom">
+			<Container className="my-3 py-3 bg-light border-bottom">
 				<Row>
 					<h5 className="text-warning-emphasis">Gestione travels</h5>
 				</Row>
@@ -301,11 +301,9 @@ const TravelForm = () => {
 					onDelete={handleDeleteTravel}
 					onEdit={handleEdit}
 				/>
-			</Container>
-			<Container className="mt-3">
 				<ResponsivePagination
 					current={currentPage}
-					total={travels && travels.totalPages}
+					total={totalPages}
 					onPageChange={handlePagination}
 				/>
 			</Container>

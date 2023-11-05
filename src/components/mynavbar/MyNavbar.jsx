@@ -38,7 +38,9 @@ const MyNavbar = () => {
 						</Navbar.Brand>
 
 						<Nav.Link href="#testimonials">Testimonials</Nav.Link>
-						<Nav.Link href="#link">Link</Nav.Link>
+						<Nav.Link as={NavLink} to="/login">
+							login
+						</Nav.Link>
 					</Nav>
 				</Navbar.Collapse>
 			</Container>

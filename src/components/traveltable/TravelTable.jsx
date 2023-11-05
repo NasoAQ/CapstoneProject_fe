@@ -2,15 +2,12 @@ import React, { useState } from "react";
 import { PencilSquare, Trash3Fill } from "react-bootstrap-icons";
 
 const TravelTable = ({ travels, onDelete, onEdit }) => {
-	const [travelList, setTravelList] = useState(travels);
-	const totalTravels = travels.length;
+	/* const [travelList, setTravelList] = useState(travels);
+	const totalTravels = travels.length; */
 
 	const handleDelete = async id => {
 		try {
 			await onDelete(id);
-
-			const updatedTravelList = travelList.filter(travel => travel._id !== id);
-			setTravelList(updatedTravelList);
 		} catch (error) {
 			console.error("Errore durante l'eliminazione del viaggio", error);
 		}
@@ -23,7 +20,7 @@ const TravelTable = ({ travels, onDelete, onEdit }) => {
 	return (
 		<div>
 			<p className="text-warning-emphasis">
-				Sono presenti {totalTravels} viaggi
+				Sono presenti {travels.length} viaggi
 			</p>
 			<table className="table my-3">
 				<thead>
