@@ -1,6 +1,7 @@
 import React from "react";
 import { Navbar, Nav, Container, Image } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
+import UserDropdown from "../userdropdwn/UserDropdown";
 
 const MyNavbar = () => {
 	return (
@@ -14,6 +15,7 @@ const MyNavbar = () => {
 						//className="d-inline-block align-top"
 						alt="logo"
 					/>
+					<UserDropdown />
 				</Navbar.Brand>
 				<Navbar.Toggle
 					aria-controls="basic-navbar-nav"
@@ -36,12 +38,12 @@ const MyNavbar = () => {
 								alt="logo"
 							/>
 						</Navbar.Brand>
-
 						<Nav.Link href="#testimonials">Testimonials</Nav.Link>
-						<Nav.Link as={NavLink} to="/login">
-							login
-						</Nav.Link>
+						<Nav.Link /* as={NavLink} to="/login" */>Contact us</Nav.Link>
 					</Nav>
+					<div className="px-5 d-none d-lg-block">
+						<UserDropdown />
+					</div>
 				</Navbar.Collapse>
 			</Container>
 		</Navbar>

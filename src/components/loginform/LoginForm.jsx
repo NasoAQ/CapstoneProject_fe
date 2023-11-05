@@ -4,7 +4,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 
 const LoginForm = () => {
-	const [loginData, setLoginData] = useState({});
+	const [loginData, setLoginData] = useState({ email: "", password: "" });
 	const [login, setLogin] = useState(null);
 	const [validated, setValidated] = useState(false);
 
@@ -19,9 +19,9 @@ const LoginForm = () => {
 	};
 
 	const onSubmit = async e => {
+		e.preventDefault();
 		const form = e.currentTarget;
 		if (form.checkValidity() === false) {
-			e.preventDefault();
 			e.stopPropagation();
 		}
 
@@ -42,7 +42,7 @@ const LoginForm = () => {
 
 			if (data.token) {
 				localStorage.setItem("loggedInUser", JSON.stringify(data.token));
-				navigate("/admin");
+				navigate("/");
 			} else {
 				alert("Email o password errate. Si prega di riprovare.");
 			}
@@ -76,6 +76,7 @@ const LoginForm = () => {
 						<Form.Label>E-mail</Form.Label>
 						<Form.Control
 							required
+							name="email"
 							type="email"
 							placeholder="e-mail"
 							onChange={handleInputChange}
@@ -86,6 +87,7 @@ const LoginForm = () => {
 						<Form.Label>Password</Form.Label>
 						<Form.Control
 							required
+							name="password"
 							type="password"
 							placeholder="password"
 							onChange={handleInputChange}
