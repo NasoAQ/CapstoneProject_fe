@@ -1,12 +1,22 @@
 import React, { useEffect, useState } from "react";
-import { Dropdown, Image, Nav } from "react-bootstrap";
+import { Dropdown, Image, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { jwtDecode } from "jwt-decode";
 
 const UserDropdown = () => {
 	const [user, setUser] = useState(null);
 	const [avatarUrl, setAvatarUrl] = useState(null);
+	const [nickname, setNickName] = useState("");
+
+	const navigate = useNavigate();
+
+	const handleLogout = () => {
+		// Rimuovi il token dal localStorage
+		localStorage.removeItem("loggedInUser");
+		navigate("/");
+	};
 
 	useEffect(() => {
 		const token = localStorage.getItem("loggedInUser");
@@ -14,6 +24,8 @@ const UserDropdown = () => {
 		if (token) {
 			try {
 				const user = jwtDecode(token);
+				const nickname = user.nickname;
+				setNickName(nickname);
 				setUser(user);
 				fetch(`${process.env.REACT_APP_SERVER_BASE_URL}/users/${user.id}`)
 					.then(response => response.json())
@@ -28,29 +40,35 @@ const UserDropdown = () => {
 	}, []);
 
 	return (
-		<Dropdown>
-			<Dropdown.Toggle
-				variant="warning"
-				id="dropdown-basic"
-				style={{ borderRadius: "50%", padding: "5px" }}
-			>
-				<Image
-					src={
-						avatarUrl ||
-						"https://media.istockphoto.com/id/1393750072/vector/flat-white-icon-man-for-web-design-silhouette-flat-illustration-vector-illustration-stock.jpg?s=612x612&w=0&k=20&c=s9hO4SpyvrDIfELozPpiB_WtzQV9KhoMUP9R9gVohoU="
-					}
-					style={{ width: "40px", height: "40px", borderRadius: "50%" }}
-				/>
-			</Dropdown.Toggle>
+		<Container className="d-flex align-items-center">
+			<span>Ciao {nickname}</span>
 
-			<Dropdown.Menu>
-				<Dropdown.Item as={Link} to="/login">
-					Login
-				</Dropdown.Item>
-				<Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-				<Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-			</Dropdown.Menu>
-		</Dropdown>
+			<Dropdown>
+				<Dropdown.Toggle
+					variant="warning"
+					id="dropdown-basic"
+					style={{ borderRadius: "50%", padding: "5px" }}
+				>
+					<Image
+						src={
+							avatarUrl ||
+							"https://media.istockphoto.com/id/1393750072/vector/flat-white-icon-man-for-web-design-silhouette-flat-illustration-vector-illustration-stock.jpg?s=612x612&w=0&k=20&c=s9hO4SpyvrDIfELozPpiB_WtzQV9KhoMUP9R9gVohoU="
+						}
+						style={{ width: "40px", height: "40px", borderRadius: "50%" }}
+					/>
+				</Dropdown.Toggle>
+
+				<Dropdown.Menu>
+					<Dropdown.Item as={Link} to="/login">
+						Login
+					</Dropdown.Item>
+					<Dropdown.Item as={Link} to="/registration">
+						Register
+					</Dropdown.Item>
+					<Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
+				</Dropdown.Menu>
+			</Dropdown>
+		</Container>
 	);
 };
 

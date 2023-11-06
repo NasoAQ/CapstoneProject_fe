@@ -5,6 +5,7 @@ import Admin from "./pages/Admin";
 import Category from "./pages/Category";
 import Login from "./pages/Login";
 import Registration from "./pages/Registration";
+import TestimonialPage from "./pages/TestimonialPage";
 
 function App() {
 	return (
@@ -14,6 +15,7 @@ function App() {
 					<Route exact path="/" element={<Home />} />
 					<Route path="/category" element={<Category />} />
 					<Route path="/category/:categoryName" element={<Category />} />
+					<Route path="/testimonials" element={<TestimonialPage />} />
 					<Route path="/login" element={<Login />} />
 					<Route path="/registration" element={<Registration />} />
 					<Route path="/admin" element={<Admin />} />
