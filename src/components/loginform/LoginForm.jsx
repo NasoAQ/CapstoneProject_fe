@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import { jwtDecode } from "jwt-decode";
 
 const LoginForm = () => {
 	const [loginData, setLoginData] = useState({ email: "", password: "" });
@@ -42,7 +43,13 @@ const LoginForm = () => {
 
 			if (data.token) {
 				localStorage.setItem("loggedInUser", JSON.stringify(data.token));
-				navigate("/");
+				const decodedToken = jwtDecode(data.token);
+				const role = decodedToken.role;
+				if (role === "admin") {
+					navigate("/admin");
+				} else if (role === "user") {
+					navigate("/");
+				}
 			} else {
 				alert("Email o password errate. Si prega di riprovare.");
 			}
@@ -58,7 +65,14 @@ const LoginForm = () => {
 		const token = params.get("token");
 		if (token !== null) {
 			localStorage.setItem("loggedInUser", JSON.stringify(token));
-			navigate("/");
+
+			const decodedToken = jwtDecode(token);
+			console.log("Decoded Token:", decodedToken);
+			if (decodedToken.role === "admin") {
+				navigate("/admin");
+			} else {
+				navigate("/");
+			}
 		}
 	}, []);
 	return (

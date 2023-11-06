@@ -8,13 +8,14 @@ const Admin = () => {
 	const token = localStorage.getItem("loggedInUser");
 	const decodedToken = jwtDecode(token);
 	const nickname = decodedToken.username;
+	const role = decodedToken.role;
 
 	useEffect(() => setUserName(nickname), []);
 	return (
 		<MainLayouts>
 			<Container className="mt-2">
 				<div>
-					Benvenuto, <span className="fw-bold"> {nickname}</span>
+					Benvenuto, <span className="fw-bold"> {nickname}</span> {role}!
 				</div>
 			</Container>
 			<TravelForm />
