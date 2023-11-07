@@ -5,7 +5,7 @@ import UserDropdown from "../userdropdwn/UserDropdown";
 
 const MyNavbar = () => {
 	return (
-		<Navbar expand="lg" className="bg-light border-bottom nav-underline">
+		<Navbar expand="lg" className="bg-light border-bottom nav-underline mb-3">
 			<Container className="container-md">
 				<Navbar.Brand className="navbar-brand d-lg-none">
 					<Image

@@ -9,11 +9,11 @@ const UserDropdown = () => {
 	const [user, setUser] = useState(null);
 	const [avatarUrl, setAvatarUrl] = useState(null);
 	const [nickname, setNickName] = useState("");
+	const [isAdmin, setIsAdmin] = useState(false);
 
 	const navigate = useNavigate();
 
 	const handleLogout = () => {
-		// Rimuovi il token dal localStorage
 		localStorage.removeItem("loggedInUser");
 		navigate("/");
 	};
@@ -24,7 +24,7 @@ const UserDropdown = () => {
 		if (token) {
 			try {
 				const user = jwtDecode(token);
-				const nickname = user.nickname;
+				const nickname = user.username;
 				setNickName(nickname);
 				setUser(user);
 				fetch(`${process.env.REACT_APP_SERVER_BASE_URL}/users/${user.id}`)
@@ -33,6 +33,7 @@ const UserDropdown = () => {
 						const userAvatar = data.newUser.avatar;
 						setAvatarUrl(userAvatar);
 					});
+				setIsAdmin(user.role === "admin");
 			} catch (error) {
 				console.error("Errore nella codifica token", error);
 			}
@@ -65,6 +66,11 @@ const UserDropdown = () => {
 					<Dropdown.Item as={Link} to="/registration">
 						Register
 					</Dropdown.Item>
+					{isAdmin && (
+						<Dropdown.Item as={Link} to="/admin">
+							Admin
+						</Dropdown.Item>
+					)}
 					<Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
 				</Dropdown.Menu>
 			</Dropdown>

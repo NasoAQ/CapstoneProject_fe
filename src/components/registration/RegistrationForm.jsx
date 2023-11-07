@@ -51,10 +51,10 @@ const RegistrationForm = () => {
 				console.error("Errore durante il caricamento dell'avatar", error);
 				return;
 			}
-		} else {
+		} /*  else {
 			console.error("Seleziona un file");
 			return;
-		}
+		} */
 
 		try {
 			const response = await fetch(
@@ -171,16 +171,12 @@ const RegistrationForm = () => {
 					<Form.Group as={Col} controlId="validationCustom05">
 						<Form.Label>Avatar</Form.Label>
 						<Form.Control
-							required
 							name="avatar"
 							type="file"
 							placeholder="avatar"
 							onChange={onChangeSetFile}
 							//min={8}
 						/>
-						<Form.Control.Feedback type="invalid">
-							Please provide a valid password.
-						</Form.Control.Feedback>
 					</Form.Group>
 					<Col className="my-2 d-flex flex-column">
 						<Button
