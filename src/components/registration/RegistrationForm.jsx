@@ -51,10 +51,7 @@ const RegistrationForm = () => {
 				console.error("Errore durante il caricamento dell'avatar", error);
 				return;
 			}
-		} /*  else {
-			console.error("Seleziona un file");
-			return;
-		} */
+		}
 
 		try {
 			const response = await fetch(

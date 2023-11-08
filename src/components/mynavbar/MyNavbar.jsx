@@ -41,7 +41,9 @@ const MyNavbar = () => {
 						<Nav.Link as={NavLink} to="/testimonials">
 							Testimonials
 						</Nav.Link>
-						<Nav.Link /* as={NavLink} to="/login" */>Contact us</Nav.Link>
+						<Nav.Link as={NavLink} to="/contacts">
+							Contact us
+						</Nav.Link>
 					</Nav>
 					<div className="px-5 d-none d-lg-block">
 						<UserDropdown />

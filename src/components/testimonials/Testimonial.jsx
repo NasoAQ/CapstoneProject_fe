@@ -5,10 +5,10 @@ const Testimonial = () => {
 	return (
 		<Container id="testimonials" className="my-5 fst-italic">
 			<h2 className="text-center text-warning-emphasis">Testimonials</h2>
-			<Carousel>
+			<Carousel className="bg-light bg-gradient">
 				<Carousel.Item>
 					<img
-						style={{ opacity: 0.5 }}
+						style={{ opacity: 0 }}
 						width="100%"
 						height={300}
 						alt="900x500"
@@ -21,7 +21,7 @@ const Testimonial = () => {
 				</Carousel.Item>
 				<Carousel.Item>
 					<img
-						style={{ opacity: 0.5 }}
+						style={{ opacity: 0 }}
 						width="100%"
 						height={300}
 						alt="900x500"
@@ -34,7 +34,7 @@ const Testimonial = () => {
 				</Carousel.Item>
 				<Carousel.Item>
 					<img
-						style={{ opacity: 0.5 }}
+						style={{ opacity: 0 }}
 						width="100%"
 						height={300}
 						alt="900x500"

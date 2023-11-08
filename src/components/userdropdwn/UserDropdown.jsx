@@ -42,7 +42,7 @@ const UserDropdown = () => {
 
 	return (
 		<Container className="d-flex align-items-center">
-			<span>Ciao {nickname}</span>
+			<span>Hello {nickname}</span>
 
 			<Dropdown>
 				<Dropdown.Toggle

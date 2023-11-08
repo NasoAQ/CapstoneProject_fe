@@ -6,6 +6,8 @@ import Category from "./pages/Category";
 import Login from "./pages/Login";
 import Registration from "./pages/Registration";
 import TestimonialPage from "./pages/TestimonialPage";
+import Details from "./pages/Details";
+import Contacts from "./pages/Contacts";
 
 function App() {
 	return (
@@ -15,7 +17,9 @@ function App() {
 					<Route exact path="/" element={<Home />} />
 					<Route path="/category" element={<Category />} />
 					<Route path="/category/:categoryName" element={<Category />} />
+					<Route path="/details/:id" element={<Details />} />
 					<Route path="/testimonials" element={<TestimonialPage />} />
+					<Route path="/contacts" element={<Contacts />} />
 					<Route path="/login" element={<Login />} />
 					<Route path="/registration" element={<Registration />} />
 					<Route path="/admin" element={<Admin />} />

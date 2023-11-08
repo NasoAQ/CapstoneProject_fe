@@ -38,7 +38,7 @@ const Category = () => {
 	}, [categoryName]);
 	return (
 		<MainLayouts>
-			<Container className="mt-5 text-center justify-content-center">
+			<Container className="mt-5 text-center justify-content-center bg-light border-bottom">
 				<h2 className="text-warning-emphasis fst-italic">
 					{categoryName ? `Adventure: ${categoryName}` : "All Adventures"}
 				</h2>
