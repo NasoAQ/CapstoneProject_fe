@@ -54,7 +54,7 @@ const Details = () => {
 									{isAuthenticated ? (
 										<Button
 											as={Link}
-											to={`/testimonials`}
+											to={`/testimonials/${id}`}
 											variant="light"
 											className="btn-sm"
 										>
