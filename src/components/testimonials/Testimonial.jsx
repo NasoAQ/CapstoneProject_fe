@@ -18,6 +18,7 @@ const Testimonial = () => {
 	return (
 		<Container id="testimonials" className="my-5 fst-italic">
 			<h2 className="text-center text-warning-emphasis">Testimonials</h2>
+
 			<Carousel className="bg-light bg-gradient">
 				{testimonials.map(testimonial => (
 					<Carousel.Item key={testimonial._id}>
@@ -29,7 +30,7 @@ const Testimonial = () => {
 							src="https://img.freepik.com/premium-vector/abstract-blurred-gradient-mesh-tools-coffee-tea-color-red-orange-light-background_640644-408.jpg"
 						/>
 						<Carousel.Caption className="text-black">
-							<h3>{testimonial.user}</h3>
+							<h3>{testimonial._id}</h3>
 							<p>{testimonial.testimonial}</p>
 							<p>{testimonial.valutation}</p>
 						</Carousel.Caption>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Container, Form, Row, Col, Button } from "react-bootstrap";
 import { useParams } from "react-router-dom";
+import Loader from "../spinner/Loader";
 
 const TestimonialForm = () => {
 	const { id } = useParams();
@@ -10,6 +11,7 @@ const TestimonialForm = () => {
 	});
 	const [travelName, setTravelName] = useState("");
 	const [validated, setValidated] = useState(false);
+	const [loading, setLoading] = useState(false);
 
 	const handleInputChange = e => {
 		const { name, value } = e.target;
@@ -23,6 +25,7 @@ const TestimonialForm = () => {
 		e.preventDefault();
 		e.stopPropagation();
 		setValidated(true);
+		setLoading(true);
 
 		try {
 			const response = await fetch(
@@ -36,6 +39,7 @@ const TestimonialForm = () => {
 				}
 			);
 			if (response.ok) {
+				setLoading(false);
 				console.log("Commento creato con successo");
 			} else {
 				console.log("Errore nella creazione del commento");
@@ -100,8 +104,9 @@ const TestimonialForm = () => {
 							type="submit"
 							//className="bg-primary-subtle "
 							variant="warning"
+							disabled={loading}
 						>
-							Submit Testimonial
+							{loading ? <Loader /> : "Submit Testimonial"}
 						</Button>
 					</Col>
 				</Form>

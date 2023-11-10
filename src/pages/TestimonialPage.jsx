@@ -19,7 +19,7 @@ const TestimonialPage = () => {
 		} else if (token) {
 			return (
 				<Container>
-					<Alert variant="info">
+					<Alert variant="warning" className="text-center">
 						Please select a travel to leave a testimonial.
 					</Alert>
 					<Testimonial />
@@ -28,7 +28,9 @@ const TestimonialPage = () => {
 		} else {
 			return (
 				<Container>
-					<Alert variant="info">Please login to leave a testimonial.</Alert>
+					<Alert variant="info" className="text-center">
+						Please login to leave a testimonial.
+					</Alert>
 					<Testimonial />
 				</Container>
 			);
