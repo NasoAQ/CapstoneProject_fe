@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import MainLayouts from "../layouts/MainLayouts";
 import { useParams } from "react-router-dom";
 import TestimonialForm from "../components/testimonialform/TestimonialForm";
@@ -7,13 +7,19 @@ import Testimonial from "../components/testimonials/Testimonial";
 
 const TestimonialPage = () => {
 	const { id } = useParams();
+	const [updateTestimonials, setUpdateTestimonials] = useState(0);
 	const token = localStorage.getItem("loggedInUser");
+
+	const handleTestimonialUpdate = () => {
+		setUpdateTestimonials(updateTestimonials + 1);
+	};
+
 	const renderContent = () => {
 		if (id && token) {
 			return (
 				<>
-					<TestimonialForm />
-					<Testimonial />
+					<TestimonialForm onTestimonialUpdate={handleTestimonialUpdate} />
+					<Testimonial key={updateTestimonials} />
 				</>
 			);
 		} else if (token) {
@@ -22,7 +28,7 @@ const TestimonialPage = () => {
 					<Alert variant="warning" className="text-center">
 						Please select a travel to leave a testimonial.
 					</Alert>
-					<Testimonial />
+					<Testimonial key={updateTestimonials} />
 				</Container>
 			);
 		} else {
@@ -31,7 +37,7 @@ const TestimonialPage = () => {
 					<Alert variant="info" className="text-center">
 						Please login to leave a testimonial.
 					</Alert>
-					<Testimonial />
+					<Testimonial key={updateTestimonials} />
 				</Container>
 			);
 		}

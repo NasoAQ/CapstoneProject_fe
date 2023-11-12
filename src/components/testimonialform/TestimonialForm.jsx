@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Container, Form, Row, Col, Button } from "react-bootstrap";
+import { Container, Form, Row, Col, Button, Alert } from "react-bootstrap";
 import { useParams } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
 import Loader from "../spinner/Loader";
 
-const TestimonialForm = () => {
+const TestimonialForm = ({ onTestimonialUpdate }) => {
 	const { id } = useParams();
 	const [testimonialData, setTestimonialData] = useState({
 		testimonial: "",
@@ -12,6 +13,7 @@ const TestimonialForm = () => {
 	const [travelName, setTravelName] = useState("");
 	const [validated, setValidated] = useState(false);
 	const [loading, setLoading] = useState(false);
+	const [showAlert, setShowAlert] = useState(false);
 
 	const handleInputChange = e => {
 		const { name, value } = e.target;
@@ -28,6 +30,8 @@ const TestimonialForm = () => {
 		setLoading(true);
 
 		try {
+			const token = localStorage.getItem("loggedInUser");
+			const user = jwtDecode(token);
 			const response = await fetch(
 				`${process.env.REACT_APP_SERVER_BASE_URL}/travels/${id}`,
 				{
@@ -35,12 +39,18 @@ const TestimonialForm = () => {
 					headers: {
 						"Content-Type": "application/json",
 					},
-					body: JSON.stringify(testimonialData),
+					body: JSON.stringify({ ...testimonialData, user }),
 				}
 			);
 			if (response.ok) {
 				setLoading(false);
 				console.log("Commento creato con successo");
+				setTestimonialData({
+					testimonial: "",
+					valutation: 0,
+				});
+				setShowAlert(true);
+				onTestimonialUpdate();
 			} else {
 				console.log("Errore nella creazione del commento");
 			}
@@ -100,16 +110,21 @@ const TestimonialForm = () => {
 					</Form.Group>
 
 					<Col className="my-2 d-flex flex-column">
-						<Button
-							type="submit"
-							//className="bg-primary-subtle "
-							variant="warning"
-							disabled={loading}
-						>
+						<Button type="submit" variant="warning" disabled={loading}>
 							{loading ? <Loader /> : "Submit Testimonial"}
 						</Button>
 					</Col>
 				</Form>
+				{showAlert && (
+					<Alert
+						variant="success"
+						onClose={() => setShowAlert(false)}
+						dismissible
+						className="mt-3"
+					>
+						Testimonial sent successfully!
+					</Alert>
+				)}
 			</Row>
 		</Container>
 	);
