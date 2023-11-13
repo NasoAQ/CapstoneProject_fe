@@ -1,11 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Container, Form, Row } from "react-bootstrap";
 
 const ContactForm = () => {
+	const [name, setName] = useState("");
+	const [email, setEmail] = useState("");
+	const [message, setMessage] = useState("");
+
+	function encode(data) {
+		return Object.keys(data)
+			.map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+			.join("&");
+	}
+
+	function handleSubmit(e) {
+		e.preventDefault();
+		fetch("/", {
+			method: "POST",
+			headers: { "Content-Type": "application/x-www-form-urlencoded" },
+			body: encode({ "form-name": "contact", name, email, message }),
+		})
+			.then(() => alert("Message sent!"))
+			.catch(error => alert(error));
+	}
+
 	return (
 		<Container
 			id="contact"
-			className="sm  py-1 bg-light border-bottom d-flex justify-content-center my-5 fst-italic"
+			className="sm py-2 bg-light border-bottom d-flex justify-content-center my-5 fst-italic"
 		>
 			<Row className="d-flex flex-column justify-content-center">
 				{/* <div className="col-lg-7 col-md-12 bg-dark text-white rounded-lg p-5 position-relative">
@@ -47,11 +68,7 @@ const ContactForm = () => {
 						</div>
 					</div>
 				</div> */}
-				<Form
-					netlify
-					name="contact"
-					/* onSubmit={handleSubmit} */
-				>
+				<Form netlify name="contact" onSubmit={handleSubmit}>
 					<h2 className="text-warning-emphasis">Contact us</h2>
 					<p className="leading-relaxed mb-5">
 						Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illum
@@ -66,7 +83,7 @@ const ContactForm = () => {
 							id="name"
 							name="name"
 							className="form-control"
-							/* onChange={(e) => setName(e.target.value)} */
+							onChange={e => setName(e.target.value)}
 						/>
 					</div>
 					<div className="mb-4">
@@ -78,7 +95,7 @@ const ContactForm = () => {
 							id="email"
 							name="email"
 							className="form-control"
-							/* onChange={(e) => setEmail(e.target.value)} */
+							onChange={e => setEmail(e.target.value)}
 						/>
 					</div>
 					<div className="mb-4">
@@ -90,7 +107,7 @@ const ContactForm = () => {
 							name="message"
 							className="form-control"
 							rows="4"
-							/* onChange={(e) => setMessage(e.target.value)} */
+							onChange={e => setMessage(e.target.value)}
 						/>
 					</div>
 					<Button type="submit" className="btn btn-primary">
