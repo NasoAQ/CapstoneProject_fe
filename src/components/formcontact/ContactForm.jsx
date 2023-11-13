@@ -1,10 +1,14 @@
 import React, { useState } from "react";
-import { Button, Container, Form, Row } from "react-bootstrap";
+import { Button, Container, Form, Row, Alert } from "react-bootstrap";
 
 const ContactForm = () => {
 	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
 	const [message, setMessage] = useState("");
+	const [alertVariant, setAlertVariant] = useState("");
+	const [alertMessage, setAlertMessage] = useState("");
+	const [showAlert, setShowAlert] = useState(false);
+	const [validated, setValidated] = useState(false);
 
 	function encode(data) {
 		return Object.keys(data)
@@ -12,16 +16,33 @@ const ContactForm = () => {
 			.join("&");
 	}
 
-	function handleSubmit(e) {
+	const handleSubmit = async e => {
 		e.preventDefault();
-		fetch("/", {
-			method: "POST",
-			headers: { "Content-Type": "application/x-www-form-urlencoded" },
-			body: encode({ "form-name": "contact", name, email, message }),
-		})
-			.then(() => alert("Message sent!"))
-			.catch(error => alert(error));
-	}
+		e.stopPropagation();
+		setValidated(true);
+		try {
+			const response = await fetch("/", {
+				method: "POST",
+				headers: { "Content-Type": "application/x-www-form-urlencoded" },
+				body: encode({ "form-name": "contact", name, email, message }),
+			});
+
+			if (response.ok) {
+				setAlertVariant("success");
+				setAlertMessage("Message sent!");
+				setShowAlert(true);
+				setValidated(false);
+			} else {
+				throw new Error(
+					`Server responded with ${response.status} ${response.statusText}`
+				);
+			}
+		} catch (error) {
+			setAlertVariant("danger");
+			setAlertMessage(`Error: ${error.message}`);
+			setShowAlert(true);
+		}
+	};
 
 	return (
 		<Container
@@ -68,25 +89,31 @@ const ContactForm = () => {
 						</div>
 					</div>
 				</div> */}
-				<Form data-netlify="true" name="contact" onSubmit={handleSubmit}>
-					<h2 className="text-warning-emphasis">Contact us</h2>
-					<p className="leading-relaxed mb-5">
-						Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illum
-						suscipit officia aspernatur veritatis. Asperiores, aliquid?
-					</p>
-					<div className="mb-4">
+				<h2 className="text-warning-emphasis">Contact us</h2>
+				<p className="leading-relaxed mb-5">
+					Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illum
+					suscipit officia aspernatur veritatis. Asperiores, aliquid?
+				</p>
+				<Form
+					noValidate
+					validated={validated}
+					data-netlify="true"
+					name="contact"
+					onSubmit={handleSubmit}
+				>
+					<Form.Group className="mb-4">
 						<input type="hidden" name="form-name" value="contact" />
-						<label htmlFor="name" className="form-label text-gray-400">
+						<Form.Label htmlFor="name" className="form-label text-gray-400">
 							Name
-						</label>
-						<input
+						</Form.Label>
+						<Form.Control
 							type="text"
 							id="name"
 							name="name"
 							className="form-control"
 							onChange={e => setName(e.target.value)}
 						/>
-					</div>
+					</Form.Group>
 					<div className="mb-4">
 						<label htmlFor="email" className="form-label text-gray-400">
 							Email
@@ -114,6 +141,11 @@ const ContactForm = () => {
 					<Button type="submit" className="btn btn-primary">
 						Submit
 					</Button>
+					{showAlert && (
+						<Alert variant={alertVariant} className="mt-3">
+							{alertMessage}
+						</Alert>
+					)}
 				</Form>
 			</Row>
 		</Container>
