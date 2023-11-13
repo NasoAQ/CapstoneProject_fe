@@ -29,7 +29,7 @@ const ContactForm = () => {
 
 			if (response.ok) {
 				setAlertVariant("success");
-				setAlertMessage("Message sent!");
+				setAlertMessage("Message sent successfully!");
 				setShowAlert(true);
 				setValidated(false);
 			} else {
@@ -47,7 +47,7 @@ const ContactForm = () => {
 	return (
 		<Container
 			id="contact"
-			className="sm py-2 bg-light border-bottom d-flex justify-content-center my-5 fst-italic"
+			className=" py-2 bg-light border-bottom d-flex justify-content-center my-5 fst-italic"
 		>
 			<Row className="d-flex flex-column justify-content-center">
 				{/* <div className="col-lg-7 col-md-12 bg-dark text-white rounded-lg p-5 position-relative">
@@ -60,7 +60,7 @@ const ContactForm = () => {
 						marginHeight={0}
 						marginWidth={0}
 						style={{ filter: "opacity(0.7)" }}
-						src="https://www.google.com/maps/embed/v1/place?q=97+warren+st+new+york+city&key=YOUR_GOOGLE_MAPS_API_KEY"
+						src="src="https://www.google.com/maps/embed/v1/place?q=L'Aquila,+AQ,+Italia&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8""
 					/>
 					<div className="bg-dark relative flex flex-wrap py-4 rounded shadow-md">
 						<div className="col-lg-6 col-md-12">
@@ -103,41 +103,51 @@ const ContactForm = () => {
 				>
 					<Form.Group className="mb-4">
 						<input type="hidden" name="form-name" value="contact" />
-						<Form.Label htmlFor="name" className="form-label text-gray-400">
+						<Form.Label htmlFor="name" className=" text-gray-400">
 							Name
 						</Form.Label>
 						<Form.Control
+							required
 							type="text"
 							id="name"
 							name="name"
-							className="form-control"
 							onChange={e => setName(e.target.value)}
 						/>
+						<Form.Control.Feedback type="invalid">
+							Please provide a name.
+						</Form.Control.Feedback>
 					</Form.Group>
-					<div className="mb-4">
-						<label htmlFor="email" className="form-label text-gray-400">
-							Email
-						</label>
-						<input
+					<Form.Group className="mb-4">
+						<Form.Label htmlFor="email" className=" text-gray-400">
+							E-mail
+						</Form.Label>
+						<Form.Control
+							required
 							type="email"
 							id="email"
 							name="email"
-							className="form-control"
 							onChange={e => setEmail(e.target.value)}
 						/>
-					</div>
-					<div className="mb-4">
-						<label htmlFor="message" className="form-label text-gray-400">
+						<Form.Control.Feedback type="invalid">
+							Please provide a valid e-mail.
+						</Form.Control.Feedback>
+					</Form.Group>
+					<Form.Group className="mb-4">
+						<Form.Label htmlFor="message" className=" text-gray-400">
 							Message
-						</label>
-						<textarea
+						</Form.Label>
+						<Form.Control
+							required
+							as="textarea"
 							id="message"
 							name="message"
-							className="form-control"
 							rows="4"
 							onChange={e => setMessage(e.target.value)}
 						/>
-					</div>
+						<Form.Control.Feedback type="invalid">
+							Please provide a comment.
+						</Form.Control.Feedback>
+					</Form.Group>
 					<Button type="submit" className="btn btn-primary">
 						Submit
 					</Button>
