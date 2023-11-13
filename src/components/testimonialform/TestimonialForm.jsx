@@ -45,12 +45,21 @@ const TestimonialForm = ({ onTestimonialUpdate }) => {
 			if (response.ok) {
 				setLoading(false);
 				console.log("Commento creato con successo");
+				setValidated(false);
+				setShowAlert(true);
 				setTestimonialData({
 					testimonial: "",
 					valutation: 0,
 				});
-				setShowAlert(true);
+
 				onTestimonialUpdate();
+				const form = e.target;
+				const elements = form.elements;
+				for (let i = 0; i < elements.length; i++) {
+					if (elements[i].type !== "submit") {
+						elements[i].value = "";
+					}
+				}
 			} else {
 				console.log("Errore nella creazione del commento");
 			}

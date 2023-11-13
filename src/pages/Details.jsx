@@ -31,11 +31,11 @@ const Details = () => {
 
 	return (
 		<MainLayouts>
-			<Container className="mt-5 text-center justify-content-center bg-light border-bottom">
+			<Container className="sm my-3 py-1 bg-light border-bottom d-flex justify-content-center">
 				{loading ? (
 					<Loader />
 				) : (
-					<Row>
+					<Row className="py-3">
 						<Col>
 							<Card className="h-100">
 								<Card.Img variant="top" src={travel.cover} alt={travel.title} />

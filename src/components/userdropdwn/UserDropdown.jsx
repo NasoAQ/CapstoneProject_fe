@@ -15,6 +15,8 @@ const UserDropdown = () => {
 
 	const handleLogout = () => {
 		localStorage.removeItem("loggedInUser");
+		setAvatarUrl(null);
+		setNickName("");
 		navigate("/");
 	};
 

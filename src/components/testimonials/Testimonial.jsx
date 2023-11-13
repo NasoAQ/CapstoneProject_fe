@@ -46,6 +46,12 @@ const Testimonial = () => {
 		}
 	};
 
+	const formatDate = timestamp => {
+		const date = new Date(timestamp);
+		const options = { year: "numeric", month: "long", day: "numeric" };
+		return date.toLocaleDateString("en-US", options);
+	};
+
 	useEffect(() => {
 		fetchTestimonials();
 	}, []);
@@ -54,7 +60,15 @@ const Testimonial = () => {
 		<Container id="testimonials" className="my-5 fst-italic">
 			<h2 className="text-center text-warning-emphasis">Testimonials</h2>
 
-			<Carousel className="bg-primary bg-gradient bg-opacity-10">
+			<Carousel
+				style={{
+					backgroundImage: `url('https://www.traveldesign.it/upload/CONF52/20160817/ARUBA_BEACH_RELAX_-tSa-1200X476.jpg')`,
+					backgroundSize: "cover",
+					backgroundPosition: "center",
+					opacity: 0.7,
+				}}
+				className=" bg-opacity-10"
+			>
 				{testimonials.length === 0 ? (
 					// Aggiungi una slide vuota
 					<Carousel.Item>
@@ -73,11 +87,15 @@ const Testimonial = () => {
 								src="https://img.freepik.com/premium-vector/abstract-blurred-gradient-mesh-tools-coffee-tea-color-red-orange-light-background_640644-408.jpg"
 							/>
 							<Carousel.Caption className="text-black">
-								<h3>{testimonial.username}</h3>
-								<p>{testimonial.travelTitle}</p>
-								<h4>{testimonial.testimonial}</h4>
+								<h4 className="text-warning-emphasis">
+									{testimonial.travelTitle}
+								</h4>
+								<h5>{testimonial.username}</h5>
+								<p>{testimonial.testimonial}</p>
 								<p>{renderStars(testimonial.valutation)}</p>
-								<p>{testimonial.updatedAt}</p>
+								<p>
+									<strong>{formatDate(testimonial.updatedAt)}</strong>
+								</p>
 							</Carousel.Caption>
 						</Carousel.Item>
 					))
