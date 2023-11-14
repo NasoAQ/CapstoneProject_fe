@@ -58,7 +58,9 @@ const Testimonial = () => {
 
 	return (
 		<Container id="testimonials" className="my-5 fst-italic">
-			<h2 className="text-center text-warning-emphasis">Testimonials</h2>
+			<h2 className="text-center text-warning-emphasis fontnew fw-semibold">
+				Testimonials
+			</h2>
 
 			<Carousel
 				style={{
@@ -86,11 +88,11 @@ const Testimonial = () => {
 								src="https://img.freepik.com/premium-vector/abstract-blurred-gradient-mesh-tools-coffee-tea-color-red-orange-light-background_640644-408.jpg"
 							/>
 							<Carousel.Caption className="text-black">
-								<h4 className="text-warning-emphasis">
+								<h4 className="text-warning-emphasis fontnew">
 									{testimonial.travelTitle}
 								</h4>
 								<h5>{testimonial.username}</h5>
-								<p>{testimonial.testimonial}</p>
+								<p className="fontnew">{testimonial.testimonial}</p>
 								<p>{renderStars(testimonial.valutation)}</p>
 								<p>
 									<strong>{formatDate(testimonial.updatedAt)}</strong>

@@ -2,10 +2,14 @@ import React from "react";
 import { Navbar, Nav, Container, Image } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import UserDropdown from "../userdropdwn/UserDropdown";
+import "../mynavbar/mynav.css";
 
 const MyNavbar = () => {
 	return (
-		<Navbar expand="lg" className="bg-light border-bottom nav-underline mb-3">
+		<Navbar
+			expand="lg"
+			className="bg-light border-bottom nav-underline mb-3 fontnew"
+		>
 			<Container className="container-md">
 				<Navbar.Brand className="navbar-brand d-lg-none">
 					<Image
@@ -22,7 +26,7 @@ const MyNavbar = () => {
 					className="border-0 p-0"
 				/>
 				<Navbar.Collapse id="basic-navbar-nav" className="border-0">
-					<Nav className="mx-auto  align-items-center">
+					<Nav className="mx-auto  align-items-center ">
 						<Nav.Link as={NavLink} to="/" exact="true">
 							Home
 						</Nav.Link>

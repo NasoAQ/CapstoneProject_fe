@@ -15,7 +15,9 @@ const MyFooter = () => {
 			<Container className=" container-md d-flex justify-content-start">
 				<Row className="pt-3 col-4 flex-nowrap">
 					<Col>
-						<h5 className="text-warning-emphasis">Our Company</h5>
+						<h5 className="text-warning-emphasis fontnew fw-semibold">
+							Our Company
+						</h5>
 						<p>
 							At vero eos et accusamus et iusto odio dignissimos ducimus qui
 							blanditiis praesentium voluptatum deleniti atque corrupti.
@@ -24,7 +26,9 @@ const MyFooter = () => {
 				</Row>
 				<Row className="pt-3 flex-end ms-auto">
 					<Col className="">
-						<h5 className="text-warning-emphasis">Our Contacts</h5>
+						<h5 className="text-warning-emphasis fontnew fw-semibold">
+							Our Contacts
+						</h5>
 						<ul>
 							<li className="mb-3">
 								<House />

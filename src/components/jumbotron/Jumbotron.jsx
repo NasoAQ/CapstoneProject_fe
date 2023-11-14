@@ -15,11 +15,15 @@ const Jumbotron = () => {
 				style={{ maxHeight: "100%", objectFit: "cover", overflow: "hidden" }}
 			/>
 			<Card.ImgOverlay className="text-center text-white my-5 pt-5 border-0 rounded-0 d-flex flex-column justify-content-center">
-				<Card.Title className="mytitle fs-1 ">Update your emotions</Card.Title>
-				<Card.Text className="mytitle fs-3 m-0">
-					Every hundred meters the world changes.
+				<Card.Title className="mytitle fs-1 fontnew ">
+					Revitalize your emotions
+				</Card.Title>
+				<Card.Text className="mytitle fs-3 m-0   fst-italic fontnew">
+					Every hundred meters, the world transforms.
 				</Card.Text>
-				<Card.Text className="fs-4 mytitle">Find out with us</Card.Text>
+				<Card.Text className="fs-4 mytitle fontnew  fst-italic">
+					Explore it with us
+				</Card.Text>
 			</Card.ImgOverlay>
 		</Card>
 	);

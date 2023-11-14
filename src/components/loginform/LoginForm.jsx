@@ -85,7 +85,9 @@ const LoginForm = () => {
 				<Loader />
 			) : (
 				<Row className="d-flex flex-column justify-content-center">
-					<h3 className="text-warning-emphasis">Login your account</h3>
+					<h3 className="text-warning-emphasis fontnew fst-italic fw-semibold text-center">
+						Login your account
+					</h3>
 					<Form
 						noValidate
 						validated={validated}

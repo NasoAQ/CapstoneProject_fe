@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Container, Form, Row, Alert } from "react-bootstrap";
+import { Button, Container, Form, Col, Row, Alert } from "react-bootstrap";
 
 const ContactForm = () => {
 	const [name, setName] = useState("");
@@ -53,25 +53,28 @@ const ContactForm = () => {
 	return (
 		<Container
 			id="contact"
-			className=" py-2 bg-light border-bottom d-flex justify-content-center my-5"
+			className="sm my-3 py-1 bg-light border-bottom d-flex justify-content-center"
 		>
-			<Row className="d-flex flex-column justify-content-center">
-				<h2 className="text-warning-emphasis fst-italic text-center">
-					Contact us
-				</h2>
-				<p className="mb-5 text-warning-emphasis text-center fst-italic">
-					Fill out the form with your preferred dates and specific requests.
-					We'll contact you soon to plan your dream vacation together
-					collaboratively.
-				</p>
+			<Row className="d-flex flex-column justify-content-center align-items-center">
+				<Col className="col-6">
+					<h2 className="text-warning-emphasis fst-italic text-center fontnew fw-semibold">
+						Contact us
+					</h2>
+					<p className="mb-5 text-warning-emphasis text-center fontnew fs-5 fst-italic">
+						Fill out the form with your preferred dates and specific requests.
+						We'll contact you soon to plan your dream vacation together
+						collaboratively.
+					</p>
+				</Col>
 				<Form
 					noValidate
 					validated={validated}
 					data-netlify="true"
 					name="contact"
 					onSubmit={handleSubmit}
+					className="col-6"
 				>
-					<Form.Group controlId="name" className="mb-4">
+					<Form.Group as={Col} controlId="name" className="mb-4">
 						<input type="hidden" name="form-name" value="contact" />
 						<Form.Label>Name</Form.Label>
 						<Form.Control
@@ -84,7 +87,7 @@ const ContactForm = () => {
 							Please provide a name.
 						</Form.Control.Feedback>
 					</Form.Group>
-					<Form.Group controlId="email" className="mb-4">
+					<Form.Group as={Col} controlId="email" className="mb-4">
 						<Form.Label>E-mail</Form.Label>
 						<Form.Control
 							required
@@ -96,7 +99,7 @@ const ContactForm = () => {
 							Please provide a valid e-mail.
 						</Form.Control.Feedback>
 					</Form.Group>
-					<Form.Group controlId="message" className="mb-4">
+					<Form.Group as={Col} controlId="message" className="mb-4">
 						<Form.Label>Message</Form.Label>
 						<Form.Control
 							required
@@ -109,7 +112,7 @@ const ContactForm = () => {
 							Please provide a comment.
 						</Form.Control.Feedback>
 					</Form.Group>
-					<Button type="submit" className="btn btn-primary">
+					<Button type="submit" className="btn btn-warning">
 						Submit
 					</Button>
 					{showAlert && (

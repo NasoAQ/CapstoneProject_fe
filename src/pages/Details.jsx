@@ -36,6 +36,9 @@ const Details = () => {
 					<Loader />
 				) : (
 					<Row className="py-3">
+						<h2 className="text-warning-emphasis text-center fst-italic fontnew fw-semibold">
+							{travel.title}
+						</h2>
 						<Col>
 							<Card className="h-100">
 								<Card.Img variant="top" src={travel.cover} alt={travel.title} />
@@ -69,11 +72,14 @@ const Details = () => {
 												Testimonial
 											</Button>
 										) : (
-											<Link to={`/login`}>
-												<Button variant="light" className="btn-sm">
-													Login to leave a testimonial
-												</Button>
-											</Link>
+											<Button
+												as={Link}
+												to={`/login`}
+												variant="light"
+												className="btn-sm"
+											>
+												Login to leave a testimonial
+											</Button>
 										)}
 									</div>
 								</Card.Body>

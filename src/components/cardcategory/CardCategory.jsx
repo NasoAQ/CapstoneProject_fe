@@ -20,7 +20,7 @@ const CardCategory = () => {
 								/>
 								<Card.ImgOverlay className="d-flex">
 									<Card.Body className="d-flex justify-content-center align-items-center">
-										<Card.Title className="mytitle text-white text-center fs-3">
+										<Card.Title className="mytitle text-white text-center fs-3 fontnew fw-semibold">
 											{title}
 										</Card.Title>
 									</Card.Body>

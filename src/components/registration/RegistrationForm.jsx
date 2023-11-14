@@ -113,7 +113,9 @@ const RegistrationForm = () => {
 				<Loader />
 			) : (
 				<Row className="d-flex flex-column justify-content-center">
-					<h3 className="text-warning-emphasis">Register new account</h3>
+					<h3 className="text-warning-emphasis fontnew fst-italic fw-semibold text-center">
+						Register new account
+					</h3>
 					<Form
 						noValidate
 						validated={validated}

@@ -4,6 +4,7 @@ import MainLayouts from "../layouts/MainLayouts";
 import TravelCard from "../components/travelcard/TravelCard";
 import Loader from "../components/spinner/Loader";
 import { Col, Container, Row } from "react-bootstrap";
+import "../components/mynavbar/mynav.css";
 
 const Category = () => {
 	const { categoryName } = useParams();
@@ -46,7 +47,7 @@ const Category = () => {
 	return (
 		<MainLayouts>
 			<Container className="mt-5 text-center justify-content-center bg-light border-bottom">
-				<h2 className="text-warning-emphasis fst-italic">
+				<h2 className="text-warning-emphasis fst-italic fontnew fw-semibold">
 					{categoryName ? `Adventure: ${categoryName}` : "All Adventures"}
 				</h2>
 
