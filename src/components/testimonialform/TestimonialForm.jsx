@@ -81,7 +81,7 @@ const TestimonialForm = ({ onTestimonialUpdate }) => {
 	return (
 		<Container className="sm my-3 py-1 bg-light border-bottom d-flex justify-content-center">
 			<Row className="d-flex flex-column justify-content-center">
-				<h3 className="text-warning-emphasis">
+				<h3 className="text-warning-emphasis fst-italic">
 					Leave a Testimonial for {travelName}
 				</h3>
 				<Form

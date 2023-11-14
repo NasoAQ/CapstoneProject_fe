@@ -66,12 +66,12 @@ const Details = () => {
 												variant="light"
 												className="btn-sm"
 											>
-												Comment
+												Testimonial
 											</Button>
 										) : (
 											<Link to={`/login`}>
 												<Button variant="light" className="btn-sm">
-													Login to Comment
+													Login to leave a testimonial
 												</Button>
 											</Link>
 										)}

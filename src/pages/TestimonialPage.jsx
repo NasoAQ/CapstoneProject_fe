@@ -26,7 +26,7 @@ const TestimonialPage = () => {
 			return (
 				<Container>
 					<Alert variant="warning" className="text-center">
-						Please select a travel to leave a testimonial.
+						Please select an adventure to leave a testimonial.
 					</Alert>
 					<Testimonial key={updateTestimonials} />
 				</Container>

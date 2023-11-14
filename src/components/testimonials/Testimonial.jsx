@@ -70,7 +70,6 @@ const Testimonial = () => {
 				className=" bg-opacity-10"
 			>
 				{testimonials.length === 0 ? (
-					// Aggiungi una slide vuota
 					<Carousel.Item>
 						<Carousel.Caption className="text-black">
 							<p>Nessun testimonial disponibile al momento.</p>
