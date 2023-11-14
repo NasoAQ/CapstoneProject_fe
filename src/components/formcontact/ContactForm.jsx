@@ -67,11 +67,10 @@ const ContactForm = () => {
 				>
 					<Form.Group controlId="name" className="mb-4">
 						<input type="hidden" name="form-name" value="contact" />
-						<Form.Label /* htmlFor="name" */>Name</Form.Label>
+						<Form.Label>Name</Form.Label>
 						<Form.Control
 							required
 							type="text"
-							//id="name"
 							name="name"
 							onChange={e => setName(e.target.value)}
 						/>
@@ -80,11 +79,10 @@ const ContactForm = () => {
 						</Form.Control.Feedback>
 					</Form.Group>
 					<Form.Group controlId="email" className="mb-4">
-						<Form.Label /* htmlFor="email" */>E-mail</Form.Label>
+						<Form.Label>E-mail</Form.Label>
 						<Form.Control
 							required
 							type="email"
-							//id="email"
 							name="email"
 							onChange={e => setEmail(e.target.value)}
 						/>
@@ -93,11 +91,10 @@ const ContactForm = () => {
 						</Form.Control.Feedback>
 					</Form.Group>
 					<Form.Group controlId="message" className="mb-4">
-						<Form.Label /* htmlFor="message" */>Message</Form.Label>
+						<Form.Label>Message</Form.Label>
 						<Form.Control
 							required
 							as="textarea"
-							//id="message"
 							name="message"
 							rows="4"
 							onChange={e => setMessage(e.target.value)}
