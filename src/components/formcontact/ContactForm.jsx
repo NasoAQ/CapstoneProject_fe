@@ -19,6 +19,12 @@ const ContactForm = () => {
 	const handleSubmit = async e => {
 		e.preventDefault();
 		e.stopPropagation();
+		const form = e.currentTarget;
+		if (form.checkValidity() === false) {
+			setValidated(true);
+			return;
+		}
+
 		setValidated(true);
 		try {
 			const response = await fetch("/", {
