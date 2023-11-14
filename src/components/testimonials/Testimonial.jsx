@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Container, Carousel } from "react-bootstrap";
 import { StarFill } from "react-bootstrap-icons";
+import Loader from "../spinner/Loader";
 
 const Testimonial = () => {
 	const [testimonials, setTestimonials] = useState([]);
+	const [loading, setLoading] = useState(true);
 
 	const renderStars = valutation => {
 		const stars = [];

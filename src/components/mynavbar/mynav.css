@@ -1,3 +1,7 @@
 .fontnew {
 	font-family: serif;
 }
+
+.myImg:hover {
+	cursor: pointer;
+}

@@ -8,6 +8,7 @@ import {
 	Envelope,
 	Telephone,
 } from "react-bootstrap-icons";
+import { Link } from "react-router-dom";
 
 const MyFooter = () => {
 	return (
@@ -49,15 +50,20 @@ const MyFooter = () => {
 			<Container className=" container-md d-flex flex-nowrap justify-content-start ">
 				<Row className="py-3 col-2 flex-nowrap">
 					<Col>
-						<a
-							href="https://www.linkedin.com/in/gabriele-d-onofrio-46494563/"
+						<Link
+							to="https://www.linkedin.com/in/gabriele-d-onofrio-46494563/"
 							target="blank"
 						>
 							<Linkedin color="black" />
-						</a>
+						</Link>
 					</Col>
 					<Col>
-						<Github />
+						<Link
+							to="https://github.com/stars/NasoAQ/lists/crown-prestigeadventures"
+							target="blank"
+						>
+							<Github color="black" />
+						</Link>
 					</Col>
 					<Col>
 						<Twitter />

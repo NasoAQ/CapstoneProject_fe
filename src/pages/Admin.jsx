@@ -14,8 +14,9 @@ const Admin = () => {
 	return (
 		<MainLayouts>
 			<Container className="mt-2">
-				<div>
-					Benvenuto, <span className="fw-bold"> {nickname}</span> {role}!
+				<div className="fontnew">
+					Benvenuto, <span className="fw-bold"> {nickname}</span> nell'{role}{" "}
+					page!
 				</div>
 			</Container>
 			<TravelForm />

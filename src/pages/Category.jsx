@@ -3,51 +3,69 @@ import { useParams } from "react-router-dom";
 import MainLayouts from "../layouts/MainLayouts";
 import TravelCard from "../components/travelcard/TravelCard";
 import Loader from "../components/spinner/Loader";
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Container, Row, Form } from "react-bootstrap";
 import "../components/mynavbar/mynav.css";
 
 const Category = () => {
-	const { categoryName } = useParams();
+	const { categoryName: initialCategoryName } = useParams();
+	const [categoryName, setCategoryName] = useState(initialCategoryName);
 	const [categoryTravels, setCategoryTravels] = useState([]);
 	const [loading, setLoading] = useState(true);
 
-	useEffect(() => {
+	const fetchCategoryTravels = async () => {
 		setLoading(true);
 
-		const fetchData = async () => {
-			try {
-				let response;
+		try {
+			let response;
 
-				if (categoryName) {
-					response = await fetch(
-						`${process.env.REACT_APP_SERVER_BASE_URL}/travels/category/${categoryName}`
-					);
-				} else {
-					response = await fetch(
-						`${process.env.REACT_APP_SERVER_BASE_URL}/travels`
-					);
-				}
-
-				const data = await response.json();
-
-				if (data.travels) {
-					setCategoryTravels(data.travels);
-				}
-
-				setLoading(false);
-			} catch (error) {
-				console.error("Errore durante la richiesta GET", error);
-				setLoading(false);
+			if (categoryName) {
+				response = await fetch(
+					`${process.env.REACT_APP_SERVER_BASE_URL}/travels/category/${categoryName}`
+				);
+			} else {
+				response = await fetch(
+					`${process.env.REACT_APP_SERVER_BASE_URL}/travels`
+				);
 			}
-		};
 
-		fetchData();
+			const data = await response.json();
+
+			if (data.travels) {
+				setCategoryTravels(data.travels);
+			}
+
+			setLoading(false);
+		} catch (error) {
+			console.error("Errore durante la richiesta GET", error);
+			setLoading(false);
+		}
+	};
+
+	const handleCategoryChange = event => {
+		setCategoryName(event.target.value);
+	};
+
+	useEffect(() => {
+		fetchCategoryTravels();
 	}, [categoryName]);
 
 	return (
 		<MainLayouts>
-			<Container className="mt-5 text-center justify-content-center bg-light border-bottom">
-				<h2 className="text-warning-emphasis fst-italic fontnew fw-semibold">
+			<Container className="my-3 py-3 text-center justify-content-center bg-light border-bottom">
+				<Form.Select
+					aria-label="category"
+					className=""
+					value={categoryName}
+					onChange={handleCategoryChange}
+				>
+					<option value="">All adventures</option>
+					<option value="Glamping">Glamping</option>
+					<option value="Yacht">Yacht</option>
+					<option value="Relax">Relax</option>
+					<option value="Sport">Sport</option>
+				</Form.Select>
+
+				<h2 className="mt-3 text-warning-emphasis fst-italic fontnew fw-semibold">
 					{categoryName ? `Adventure: ${categoryName}` : "All Adventures"}
 				</h2>
 

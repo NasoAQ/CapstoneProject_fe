@@ -112,9 +112,11 @@ const ContactForm = () => {
 							Please provide a comment.
 						</Form.Control.Feedback>
 					</Form.Group>
-					<Button type="submit" className="btn btn-warning">
-						Submit
-					</Button>
+					<Col className="my-2 d-flex flex-column">
+						<Button type="submit" variant="warning">
+							Submit
+						</Button>
+					</Col>
 					{showAlert && (
 						<Alert variant={alertVariant} className="mt-3">
 							{alertMessage}

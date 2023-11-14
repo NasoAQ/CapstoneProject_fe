@@ -118,11 +118,7 @@ const LoginForm = () => {
 							<Form.Control.Feedback>Looks good!</Form.Control.Feedback>
 						</Form.Group>
 						<Col className="my-2 d-flex flex-column">
-							<Button
-								type="submit"
-								//className="bg-primary-subtle "
-								variant="warning"
-							>
+							<Button type="submit" variant="warning">
 								Login
 							</Button>
 						</Col>

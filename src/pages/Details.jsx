@@ -52,7 +52,11 @@ const Details = () => {
 									<Card.Text>{travel.content}</Card.Text>
 									<div className="d-flex justify-content-between ">
 										<Card.Text className="text-primary">
-											Price: {travel.price} €
+											Price: from{" "}
+											<span className="text-warning-emphasis">
+												{" "}
+												{travel.price} €
+											</span>
 										</Card.Text>
 										<Button
 											as={Link}
@@ -69,7 +73,7 @@ const Details = () => {
 												variant="light"
 												className="btn-sm"
 											>
-												Testimonial
+												Leave a testimonial
 											</Button>
 										) : (
 											<Button

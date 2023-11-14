@@ -1,6 +1,6 @@
 import React from "react";
 import { Navbar, Nav, Container, Image } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import UserDropdown from "../userdropdwn/UserDropdown";
 import "../mynavbar/mynav.css";
 
@@ -12,13 +12,16 @@ const MyNavbar = () => {
 		>
 			<Container className="container-md">
 				<Navbar.Brand className="navbar-brand d-lg-none">
-					<Image
-						src="https://raw.githubusercontent.com/NasoAQ/fe/main/src/Assets/LOGO.png"
-						width=""
-						height={80}
-						//className="d-inline-block align-top"
-						alt="logo"
-					/>
+					<Link to={"/"}>
+						<Image
+							src="https://raw.githubusercontent.com/NasoAQ/fe/main/src/Assets/LOGO.png"
+							width=""
+							height={80}
+							className="myImg no-nav-underline"
+							alt="logo"
+						/>
+					</Link>
+
 					<UserDropdown />
 				</Navbar.Brand>
 				<Navbar.Toggle
@@ -34,13 +37,16 @@ const MyNavbar = () => {
 							Adventures
 						</Nav.Link>
 						<Navbar.Brand className="px-5 d-none d-lg-block">
-							<Image
-								src="https://raw.githubusercontent.com/NasoAQ/fe/main/src/Assets/LOGO.png"
-								width=""
-								height={80}
-								//className="d-inline-block align-top"
-								alt="logo"
-							/>
+							<Link to={"/"}>
+								<Image
+									src="https://raw.githubusercontent.com/NasoAQ/fe/main/src/Assets/LOGO.png"
+									width=""
+									height={80}
+									className="myImg"
+									alt="logo"
+									href="/"
+								/>
+							</Link>
 						</Navbar.Brand>
 						<Nav.Link as={NavLink} to="/testimonials">
 							Testimonials

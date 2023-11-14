@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import { Container } from "react-bootstrap";
 import { PencilSquare, Trash3Fill } from "react-bootstrap-icons";
+import { Link } from "react-router-dom";
 
 const TravelTable = ({ travels, onDelete, onEdit }) => {
 	/* const [travelList, setTravelList] = useState(travels);
@@ -18,11 +20,12 @@ const TravelTable = ({ travels, onDelete, onEdit }) => {
 	};
 
 	return (
-		<div>
-			<p className="text-warning-emphasis">
-				Sono presenti {travels.length} viaggi
+		<Container>
+			<p className="text-warning-emphasis fontnew">
+				Sono presenti <span className="fw-semibold">{travels.length}</span>{" "}
+				viaggi
 			</p>
-			<table className="table my-3">
+			<table className="table table-sm my-3">
 				<thead>
 					<tr>
 						<th className="text-warning-emphasis" scope="col">
@@ -61,11 +64,13 @@ const TravelTable = ({ travels, onDelete, onEdit }) => {
 							<td>{travel.price} €</td>
 							<td>
 								{travel.cover && (
-									<img
-										src={travel.cover}
-										alt={`Cover for ${travel.title}`}
-										style={{ maxWidth: "100px", maxHeight: "100px" }}
-									/>
+									<Link as={Link} to={`/details/${travel._id}`}>
+										<img
+											src={travel.cover}
+											alt={`Cover for ${travel.title}`}
+											style={{ maxWidth: "100px", maxHeight: "100px" }}
+										/>
+									</Link>
 								)}
 							</td>
 							<td>
@@ -90,7 +95,7 @@ const TravelTable = ({ travels, onDelete, onEdit }) => {
 					))}
 				</tbody>
 			</table>
-		</div>
+		</Container>
 	);
 };
 

@@ -255,7 +255,9 @@ const TravelForm = () => {
 					{alertMessage}
 				</Alert>
 				<Row>
-					<h5 className="text-warning-emphasis">Gestione travels</h5>
+					<h5 className="text-warning-emphasis fontnew fw-semibold">
+						Gestione travels
+					</h5>
 				</Row>
 				<Form onSubmit={onSubmit}>
 					<Row encType="multipart/form-data">
