@@ -5,6 +5,8 @@ const ContactForm = () => {
 	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
 	const [message, setMessage] = useState("");
+	const [date, setDate] = useState("");
+	const [dateTwo, setDateTwo] = useState("");
 	const [alertVariant, setAlertVariant] = useState("");
 	const [alertMessage, setAlertMessage] = useState("");
 	const [showAlert, setShowAlert] = useState(false);
@@ -30,7 +32,14 @@ const ContactForm = () => {
 			const response = await fetch("/", {
 				method: "POST",
 				headers: { "Content-Type": "application/x-www-form-urlencoded" },
-				body: encode({ "form-name": "contact", name, email, message }),
+				body: encode({
+					"form-name": "contact",
+					name,
+					email,
+					date,
+					dateTwo,
+					message,
+				}),
 			});
 
 			if (response.ok) {
@@ -99,6 +108,32 @@ const ContactForm = () => {
 							Inserisci un e-mail valida.
 						</Form.Control.Feedback>
 					</Form.Group>
+					<Row>
+						<Form.Group as={Col} controlId="date" className="mb-4" md={6}>
+							<Form.Label>Dal</Form.Label>
+							<Form.Control
+								required
+								type="date"
+								name="date"
+								onChange={e => setDate(e.target.value)}
+							/>
+							<Form.Control.Feedback type="invalid">
+								Inserisci una data valida.
+							</Form.Control.Feedback>
+						</Form.Group>
+						<Form.Group as={Col} controlId="dateTwo" className="mb-4" md={6}>
+							<Form.Label>Al</Form.Label>
+							<Form.Control
+								required
+								type="date"
+								name="dateTwo"
+								onChange={e => setDateTwo(e.target.value)}
+							/>
+							<Form.Control.Feedback type="invalid">
+								Inserisci una data valida.
+							</Form.Control.Feedback>
+						</Form.Group>
+					</Row>
 					<Form.Group as={Col} controlId="message" className="mb-4">
 						<Form.Label>Messaggio</Form.Label>
 						<Form.Control

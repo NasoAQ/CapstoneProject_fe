@@ -99,7 +99,9 @@ const Testimonial = () => {
 										{testimonial.travelTitle}
 									</h4>
 									<h5>{testimonial.username}</h5>
-									<p className="fontnew">{testimonial.testimonial}</p>
+									<p className="fontnew testimonial-text">
+										{testimonial.testimonial}
+									</p>
 									<p>{renderStars(testimonial.valutation)}</p>
 									<p>
 										<strong>{formatDate(testimonial.updatedAt)}</strong>

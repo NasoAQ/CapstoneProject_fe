@@ -8,6 +8,8 @@ import Registration from "./pages/Registration";
 import TestimonialPage from "./pages/TestimonialPage";
 import Details from "./pages/Details";
 import Contacts from "./pages/Contacts";
+import ProtectedRoutes from "./middleware/ProtectedRoute";
+import Error from "./pages/Error";
 
 function App() {
 	return (
@@ -23,7 +25,11 @@ function App() {
 					<Route path="/contacts" element={<Contacts />} />
 					<Route path="/login" element={<Login />} />
 					<Route path="/registration" element={<Registration />} />
-					<Route path="/admin" element={<Admin />} />
+					<Route path="*" element={<Error />} />
+
+					<Route element={<ProtectedRoutes />}>
+						<Route path="/admin" element={<Admin />} />
+					</Route>
 				</Routes>
 			</BrowserRouter>
 		</>
