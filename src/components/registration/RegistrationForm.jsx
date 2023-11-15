@@ -193,7 +193,7 @@ const RegistrationForm = () => {
 					</Form>
 					<Col>
 						<Link
-							to="/login"
+							to={"/login"}
 							className="d-flex align-items-center text-xs font-weight-light text-center text-muted"
 						>
 							<span className="ml-2">Hai già un account?</span>

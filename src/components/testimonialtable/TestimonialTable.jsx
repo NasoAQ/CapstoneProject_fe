@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Container, Alert } from "react-bootstrap";
+import { Container, Alert, Row } from "react-bootstrap";
 import { PencilSquare, Trash3Fill, StarFill } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 import Loader from "../spinner/Loader";
@@ -100,7 +100,9 @@ const TestimonialTable = () => {
 				commenti
 			</p>
 			{loading ? (
-				<Loader />
+				<Row className="d-flex justify-content-center">
+					<Loader />
+				</Row>
 			) : (
 				<>
 					<Alert

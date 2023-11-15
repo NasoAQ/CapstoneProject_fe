@@ -125,7 +125,7 @@ const LoginForm = () => {
 					</Form>
 					<Col>
 						<Link
-							to="/registration"
+							to={"/registration"}
 							className="d-flex align-items-center text-xs font-weight-light text-center text-muted"
 						>
 							<span className="ml-2">Non hai un account?</span>

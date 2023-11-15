@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import MainLayouts from "../layouts/MainLayouts";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import TestimonialForm from "../components/testimonialform/TestimonialForm";
 import { Alert, Container } from "react-bootstrap";
 import Testimonial from "../components/testimonials/Testimonial";
@@ -26,7 +26,7 @@ const TestimonialPage = () => {
 			return (
 				<Container>
 					<Alert variant="warning" className="text-center fontnew">
-						Seleziona un <a href="/category"> viaggio</a> per lasciare una
+						Seleziona un <Link to={"/category"}> viaggio</Link> per lasciare una
 						recensione.
 					</Alert>
 					<Testimonial key={updateTestimonials} />
@@ -36,7 +36,8 @@ const TestimonialPage = () => {
 			return (
 				<Container>
 					<Alert variant="info" className="text-center fontnew">
-						Effettua il <a href="/login"> login</a> per lasciare una recensione.
+						Effettua il <Link to={"/login"}> login</Link> per lasciare una
+						recensione.
 					</Alert>
 					<Testimonial key={updateTestimonials} />
 				</Container>
