@@ -86,7 +86,7 @@ const LoginForm = () => {
 			) : (
 				<Row className="d-flex flex-column justify-content-center">
 					<h3 className="text-warning-emphasis fontnew fst-italic fw-semibold text-center">
-						Login your account
+						Effettua il login
 					</h3>
 					<Form
 						noValidate
@@ -104,7 +104,7 @@ const LoginForm = () => {
 								placeholder="e-mail"
 								onChange={handleInputChange}
 							/>
-							<Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+							<Form.Control.Feedback>Corretto!</Form.Control.Feedback>
 						</Form.Group>
 						<Form.Group as={Col} controlId="validationCustom02">
 							<Form.Label>Password</Form.Label>
@@ -115,7 +115,7 @@ const LoginForm = () => {
 								placeholder="password"
 								onChange={handleInputChange}
 							/>
-							<Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+							<Form.Control.Feedback>Corretto!</Form.Control.Feedback>
 						</Form.Group>
 						<Col className="my-2 d-flex flex-column">
 							<Button type="submit" variant="warning">
@@ -128,7 +128,7 @@ const LoginForm = () => {
 							to="/registration"
 							className="d-flex align-items-center text-xs font-weight-light text-center text-muted"
 						>
-							<span className="ml-2">You don't have an account?</span>
+							<span className="ml-2">Non hai un account?</span>
 						</Link>
 					</Col>
 				</Row>

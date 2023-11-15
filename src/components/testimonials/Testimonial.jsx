@@ -43,8 +43,10 @@ const Testimonial = () => {
 			);
 
 			setTestimonials(updatedTestimonials);
+			setLoading(false);
 		} catch (error) {
 			console.error("Errore nella richiesta:", error);
+			setLoading(false);
 		}
 	};
 
@@ -59,51 +61,55 @@ const Testimonial = () => {
 	}, []);
 
 	return (
-		<Container id="testimonials" className="my-5 fst-italic">
+		<Container id="testimonials" className="my-5 fst-italic text-center">
 			<h2 className="text-center text-warning-emphasis fontnew fw-semibold">
-				Testimonials
+				Testimonianze
 			</h2>
 
-			<Carousel
-				style={{
-					backgroundImage: `url('https://www.traveldesign.it/upload/CONF52/20160817/ARUBA_BEACH_RELAX_-tSa-1200X476.jpg')`,
-					backgroundSize: "cover",
-					backgroundPosition: "center",
-					opacity: 0.7,
-				}}
-				className=" bg-opacity-10"
-			>
-				{testimonials.length === 0 ? (
-					<Carousel.Item>
-						<Carousel.Caption className="text-black">
-							<p>Nessun testimonial disponibile al momento.</p>
-						</Carousel.Caption>
-					</Carousel.Item>
-				) : (
-					testimonials.map(testimonial => (
-						<Carousel.Item key={testimonial._id}>
-							<img
-								style={{ opacity: 0 }}
-								width="100%"
-								height={300}
-								alt="900x500"
-								src="https://img.freepik.com/premium-vector/abstract-blurred-gradient-mesh-tools-coffee-tea-color-red-orange-light-background_640644-408.jpg"
-							/>
+			{loading ? (
+				<Loader />
+			) : (
+				<Carousel
+					style={{
+						backgroundImage: `url('https://www.traveldesign.it/upload/CONF52/20160817/ARUBA_BEACH_RELAX_-tSa-1200X476.jpg')`,
+						backgroundSize: "cover",
+						backgroundPosition: "center",
+						opacity: 0.7,
+					}}
+					className=" bg-opacity-10"
+				>
+					{testimonials.length === 0 ? (
+						<Carousel.Item>
 							<Carousel.Caption className="text-black">
-								<h4 className="text-warning-emphasis fontnew">
-									{testimonial.travelTitle}
-								</h4>
-								<h5>{testimonial.username}</h5>
-								<p className="fontnew">{testimonial.testimonial}</p>
-								<p>{renderStars(testimonial.valutation)}</p>
-								<p>
-									<strong>{formatDate(testimonial.updatedAt)}</strong>
-								</p>
+								<p>Nessun testimonial disponibile al momento.</p>
 							</Carousel.Caption>
 						</Carousel.Item>
-					))
-				)}
-			</Carousel>
+					) : (
+						testimonials.map(testimonial => (
+							<Carousel.Item key={testimonial._id}>
+								<img
+									style={{ opacity: 0 }}
+									width="100%"
+									height={300}
+									alt="900x500"
+									src="https://img.freepik.com/premium-vector/abstract-blurred-gradient-mesh-tools-coffee-tea-color-red-orange-light-background_640644-408.jpg"
+								/>
+								<Carousel.Caption className="text-black">
+									<h4 className="text-warning-emphasis fontnew">
+										{testimonial.travelTitle}
+									</h4>
+									<h5>{testimonial.username}</h5>
+									<p className="fontnew">{testimonial.testimonial}</p>
+									<p>{renderStars(testimonial.valutation)}</p>
+									<p>
+										<strong>{formatDate(testimonial.updatedAt)}</strong>
+									</p>
+								</Carousel.Caption>
+							</Carousel.Item>
+						))
+					)}
+				</Carousel>
+			)}
 		</Container>
 	);
 };

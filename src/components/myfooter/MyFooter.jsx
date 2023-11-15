@@ -17,18 +17,20 @@ const MyFooter = () => {
 				<Row className="pt-3 col-4 flex-nowrap">
 					<Col>
 						<h5 className="text-warning-emphasis fontnew fw-semibold">
-							Our Company
+							La nostra azienda
 						</h5>
 						<p>
-							At vero eos et accusamus et iusto odio dignissimos ducimus qui
-							blanditiis praesentium voluptatum deleniti atque corrupti.
+							Con una carriera pluriennale nell'eccellenza del lusso, la nostra
+							agenzia di viaggi è sinonimo di esperienze straordinarie. Dal
+							curare itinerari esclusivi alle prenotazioni impeccabili, ci
+							dedichiamo a offrire viaggi indimenticabili.
 						</p>
 					</Col>
 				</Row>
 				<Row className="pt-3 flex-end ms-auto">
 					<Col className="">
 						<h5 className="text-warning-emphasis fontnew fw-semibold">
-							Our Contacts
+							Contatti
 						</h5>
 						<ul>
 							<li className="mb-3">

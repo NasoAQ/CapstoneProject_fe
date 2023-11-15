@@ -16,13 +16,13 @@ const Jumbotron = () => {
 			/>
 			<Card.ImgOverlay className="text-center text-white my-5 pt-5 border-0 rounded-0 d-flex flex-column justify-content-center">
 				<Card.Title className="mytitle fs-1 fontnew ">
-					Revitalize your emotions
+					Rigenera le tue emozioni
 				</Card.Title>
 				<Card.Text className="mytitle fs-3 m-0   fst-italic fontnew">
-					Every hundred meters, the world transforms.
+					Ogni cento metri, il mondo si trasforma
 				</Card.Text>
 				<Card.Text className="fs-4 mytitle fontnew  fst-italic">
-					Explore it with us
+					Esploralo con noi
 				</Card.Text>
 			</Card.ImgOverlay>
 		</Card>

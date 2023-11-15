@@ -23,7 +23,7 @@ const TravelTable = ({ travels, onDelete, onEdit }) => {
 		<Container>
 			<p className="text-warning-emphasis fontnew">
 				Sono presenti <span className="fw-semibold">{travels.length}</span>{" "}
-				viaggi
+				viaggi in questa pagina
 			</p>
 			<table className="table table-sm my-3">
 				<thead>
@@ -32,25 +32,25 @@ const TravelTable = ({ travels, onDelete, onEdit }) => {
 							#
 						</th>
 						<th className="text-warning-emphasis" scope="col">
-							Title
+							Titolo
 						</th>
 						<th className="text-warning-emphasis" scope="col">
-							Category
+							Categoria
 						</th>
 						<th className="text-warning-emphasis" scope="col">
-							Content
+							Contenuto
 						</th>
 						<th className="text-warning-emphasis" scope="col">
-							Price
+							Prezzo
 						</th>
 						<th className="text-warning-emphasis" scope="col">
-							Cover
+							Copertina
 						</th>
 						<th className="text-warning-emphasis" scope="col">
-							Edit
+							Modifica
 						</th>
 						<th className="text-warning-emphasis" scope="col">
-							Delete
+							Cancella
 						</th>
 					</tr>
 				</thead>

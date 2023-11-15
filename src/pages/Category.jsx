@@ -58,7 +58,7 @@ const Category = () => {
 					value={categoryName}
 					onChange={handleCategoryChange}
 				>
-					<option value="">All adventures</option>
+					<option value="">Tutte le avventure</option>
 					<option value="Glamping">Glamping</option>
 					<option value="Yacht">Yacht</option>
 					<option value="Relax">Relax</option>
@@ -66,7 +66,7 @@ const Category = () => {
 				</Form.Select>
 
 				<h2 className="mt-3 text-warning-emphasis fst-italic fontnew fw-semibold">
-					{categoryName ? `Adventure: ${categoryName}` : "All Adventures"}
+					{categoryName ? `Avventura ${categoryName}` : "Tutte le avventure"}
 				</h2>
 
 				{loading ? (

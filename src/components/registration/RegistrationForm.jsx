@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { Container, Form, Row, Col, Button } from "react-bootstrap";
 import Loader from "../spinner/Loader";
 
@@ -114,7 +114,7 @@ const RegistrationForm = () => {
 			) : (
 				<Row className="d-flex flex-column justify-content-center">
 					<h3 className="text-warning-emphasis fontnew fst-italic fw-semibold text-center">
-						Register new account
+						Registra un nuovo account
 					</h3>
 					<Form
 						noValidate
@@ -124,16 +124,16 @@ const RegistrationForm = () => {
 						onSubmit={onSubmit}
 					>
 						<Form.Group as={Col} controlId="validationCustom01">
-							<Form.Label>Name</Form.Label>
+							<Form.Label>Nome</Form.Label>
 							<Form.Control
 								required
 								name="name"
 								type="text"
-								placeholder="name"
+								placeholder="nome"
 								onChange={handleInputChange}
 							/>
 							<Form.Control.Feedback type="invalid">
-								Please provide a name.
+								Inserisci un nome.
 							</Form.Control.Feedback>
 						</Form.Group>
 						<Form.Group as={Col} controlId="validationCustom02">
@@ -146,7 +146,7 @@ const RegistrationForm = () => {
 								onChange={handleInputChange}
 							/>
 							<Form.Control.Feedback type="invalid">
-								Please provide an username.
+								Inserisci un username.
 							</Form.Control.Feedback>
 						</Form.Group>
 						<Form.Group as={Col} controlId="validationCustom03">
@@ -159,7 +159,7 @@ const RegistrationForm = () => {
 								onChange={handleInputChange}
 							/>
 							<Form.Control.Feedback type="invalid">
-								Please provide a valid e-mail.
+								Inserisci un e-mail valida.
 							</Form.Control.Feedback>
 						</Form.Group>
 						<Form.Group as={Col} controlId="validationCustom04">
@@ -173,7 +173,7 @@ const RegistrationForm = () => {
 								//min={8}
 							/>
 							<Form.Control.Feedback type="invalid">
-								Please provide a valid password.
+								Inserisci una password valida.
 							</Form.Control.Feedback>
 						</Form.Group>
 						<Form.Group as={Col} controlId="validationCustom05">
@@ -183,19 +183,22 @@ const RegistrationForm = () => {
 								type="file"
 								placeholder="avatar"
 								onChange={onChangeSetFile}
-								//min={8}
 							/>
 						</Form.Group>
 						<Col className="my-2 d-flex flex-column">
-							<Button
-								type="submit"
-								//className="bg-primary-subtle "
-								variant="warning"
-							>
-								Register
+							<Button type="submit" variant="warning">
+								Registra
 							</Button>
 						</Col>
 					</Form>
+					<Col>
+						<Link
+							to="/login"
+							className="d-flex align-items-center text-xs font-weight-light text-center text-muted"
+						>
+							<span className="ml-2">Hai già un account?</span>
+						</Link>
+					</Col>
 				</Row>
 			)}
 		</Container>

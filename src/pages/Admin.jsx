@@ -3,6 +3,7 @@ import MainLayouts from "../layouts/MainLayouts";
 import TravelForm from "../components/travelform/TravelForm";
 import { jwtDecode } from "jwt-decode";
 import { Container } from "react-bootstrap";
+import TestimonialTable from "../components/testimonialtable/TestimonialTable";
 const Admin = () => {
 	const [username, setUserName] = useState("");
 	const token = localStorage.getItem("loggedInUser");
@@ -20,6 +21,7 @@ const Admin = () => {
 				</div>
 			</Container>
 			<TravelForm />
+			<TestimonialTable />
 		</MainLayouts>
 	);
 };

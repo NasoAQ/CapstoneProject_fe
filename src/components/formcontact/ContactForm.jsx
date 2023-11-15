@@ -58,12 +58,12 @@ const ContactForm = () => {
 			<Row className="d-flex flex-column justify-content-center align-items-center">
 				<Col className="col-6">
 					<h2 className="text-warning-emphasis fst-italic text-center fontnew fw-semibold">
-						Contact us
+						Contattaci
 					</h2>
 					<p className="mb-5 text-warning-emphasis text-center fontnew fs-5 fst-italic">
-						Fill out the form with your preferred dates and specific requests.
-						We'll contact you soon to plan your dream vacation together
-						collaboratively.
+						Compila il modulo con le date preferite e le richieste specifiche.
+						Ci metteremo presto in contatto con te per pianificare insieme la
+						tua vacanza da sogno in modo collaborativo.
 					</p>
 				</Col>
 				<Form
@@ -76,7 +76,7 @@ const ContactForm = () => {
 				>
 					<Form.Group as={Col} controlId="name" className="mb-4">
 						<input type="hidden" name="form-name" value="contact" />
-						<Form.Label>Name</Form.Label>
+						<Form.Label>Nome</Form.Label>
 						<Form.Control
 							required
 							type="text"
@@ -84,7 +84,7 @@ const ContactForm = () => {
 							onChange={e => setName(e.target.value)}
 						/>
 						<Form.Control.Feedback type="invalid">
-							Please provide a name.
+							Inserisci un nome.
 						</Form.Control.Feedback>
 					</Form.Group>
 					<Form.Group as={Col} controlId="email" className="mb-4">
@@ -96,11 +96,11 @@ const ContactForm = () => {
 							onChange={e => setEmail(e.target.value)}
 						/>
 						<Form.Control.Feedback type="invalid">
-							Please provide a valid e-mail.
+							Inserisci un e-mail valida.
 						</Form.Control.Feedback>
 					</Form.Group>
 					<Form.Group as={Col} controlId="message" className="mb-4">
-						<Form.Label>Message</Form.Label>
+						<Form.Label>Messaggio</Form.Label>
 						<Form.Control
 							required
 							as="textarea"

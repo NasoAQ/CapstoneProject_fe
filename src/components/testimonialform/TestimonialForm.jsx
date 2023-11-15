@@ -82,7 +82,7 @@ const TestimonialForm = ({ onTestimonialUpdate }) => {
 		<Container className="sm my-3 py-1 bg-light border-bottom d-flex justify-content-center">
 			<Row className="d-flex flex-column justify-content-center">
 				<h3 className="text-warning-emphasis fst-italic">
-					Leave a Testimonial for {travelName}
+					Lascia una testimonianza per {travelName}
 				</h3>
 				<Form
 					noValidate
@@ -92,7 +92,7 @@ const TestimonialForm = ({ onTestimonialUpdate }) => {
 					onSubmit={handleSubmit}
 				>
 					<Form.Group as={Col} controlId="formTestimonial">
-						<Form.Label>Your experience</Form.Label>
+						<Form.Label>La tua esperienza</Form.Label>
 						<Form.Control
 							required
 							as="textarea"
@@ -100,11 +100,11 @@ const TestimonialForm = ({ onTestimonialUpdate }) => {
 							onChange={handleInputChange}
 						/>
 						<Form.Control.Feedback type="invalid">
-							Please provide a comment.
+							Inserisci un commento valido.
 						</Form.Control.Feedback>
 					</Form.Group>
 					<Form.Group as={Col} controlId="formValutation">
-						<Form.Label>Rating</Form.Label>
+						<Form.Label>Valutazione</Form.Label>
 						<Form.Control
 							required
 							name="valutation"
@@ -114,7 +114,7 @@ const TestimonialForm = ({ onTestimonialUpdate }) => {
 							onChange={handleInputChange}
 						/>
 						<Form.Control.Feedback type="invalid">
-							Please provide a valid rating (1-5).
+							Inserisci una valutazione (1-5).
 						</Form.Control.Feedback>
 					</Form.Group>
 
@@ -131,7 +131,7 @@ const TestimonialForm = ({ onTestimonialUpdate }) => {
 						dismissible
 						className="mt-3"
 					>
-						Testimonial sent successfully!
+						Testimonianza inviata correttamente!
 					</Alert>
 				)}
 			</Row>

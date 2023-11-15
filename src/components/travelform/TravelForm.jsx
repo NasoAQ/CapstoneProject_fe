@@ -136,6 +136,7 @@ const TravelForm = () => {
 
 			if (response.status === 200) {
 				const updatedTravels = travels.filter(travel => travel._id !== id);
+				window.scrollTo({ top: 0, behavior: "smooth" });
 				setTravels(updatedTravels);
 				setAlertVariant("success");
 				setAlertMessage("Travel deleted successfully!");
@@ -256,7 +257,7 @@ const TravelForm = () => {
 				</Alert>
 				<Row>
 					<h5 className="text-warning-emphasis fontnew fw-semibold">
-						Gestione travels
+						Gestione viaggi
 					</h5>
 				</Row>
 				<Form onSubmit={onSubmit}>
@@ -264,7 +265,7 @@ const TravelForm = () => {
 						<Col>
 							<input
 								type="text"
-								placeholder="Title"
+								placeholder="Titolo"
 								aria-label="Title"
 								className="form-control form-control-sm"
 								value={formData.title || ""}
@@ -289,7 +290,7 @@ const TravelForm = () => {
 							>
 								{" "}
 								<option value="" disabled>
-									Select a category
+									Scegli categoria
 								</option>
 								<option value="Glamping">Glamping</option>
 								<option value="Yacht">Yacht</option>
@@ -310,7 +311,7 @@ const TravelForm = () => {
 						<Col>
 							<input
 								type="number"
-								placeholder="price"
+								placeholder="prezzo"
 								aria-label="price"
 								min={1}
 								className="form-control form-control-sm"
@@ -327,7 +328,7 @@ const TravelForm = () => {
 							<Col>
 								<input
 									type="text"
-									placeholder="Content"
+									placeholder="Contenuto"
 									aria-label="Content"
 									className="form-control form-control-sm"
 									value={formData.content || ""}

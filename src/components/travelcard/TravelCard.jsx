@@ -7,7 +7,7 @@ const TravelCard = props => {
 	const { _id, title, category, price, content, cover } = props.travel;
 
 	return (
-		<Card className="h-100 mycard">
+		<Card className=" mycard">
 			<Card.Img variant="top" src={cover} alt={title} />
 			<Card.Body>
 				<Card.Subtitle className="mb-2 text-muted">{category}</Card.Subtitle>
@@ -18,7 +18,7 @@ const TravelCard = props => {
 					variant="warning"
 					className="btn-sm"
 				>
-					Details
+					Dettagli
 				</Button>
 			</Card.Body>
 		</Card>

@@ -26,7 +26,8 @@ const TestimonialPage = () => {
 			return (
 				<Container>
 					<Alert variant="warning" className="text-center fontnew">
-						Please select an adventure to leave a testimonial.
+						Seleziona un <a href="/category"> viaggio</a> per lasciare una
+						recensione.
 					</Alert>
 					<Testimonial key={updateTestimonials} />
 				</Container>
@@ -35,7 +36,7 @@ const TestimonialPage = () => {
 			return (
 				<Container>
 					<Alert variant="info" className="text-center fontnew">
-						Please login to leave a testimonial.
+						Effettua il <a href="/login"> login</a> per lasciare una recensione.
 					</Alert>
 					<Testimonial key={updateTestimonials} />
 				</Container>

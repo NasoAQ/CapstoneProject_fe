@@ -34,7 +34,7 @@ const MyNavbar = () => {
 							Home
 						</Nav.Link>
 						<Nav.Link as={NavLink} to="/category">
-							Adventures
+							Avventure
 						</Nav.Link>
 						<Navbar.Brand className="px-5 d-none d-lg-block">
 							<Link to={"/"}>
@@ -49,10 +49,10 @@ const MyNavbar = () => {
 							</Link>
 						</Navbar.Brand>
 						<Nav.Link as={NavLink} to="/testimonials">
-							Testimonials
+							Testimonianze
 						</Nav.Link>
 						<Nav.Link as={NavLink} to="/contacts">
-							Contact us
+							Contattaci
 						</Nav.Link>
 					</Nav>
 					<div className="px-5 d-none d-lg-block">

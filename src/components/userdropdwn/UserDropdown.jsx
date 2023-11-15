@@ -45,7 +45,7 @@ const UserDropdown = () => {
 	return (
 		<Container className="d-flex align-items-center">
 			<span className="me-1">
-				Hello<strong> {nickname}</strong>
+				Ciao {""} <strong> {nickname}</strong>
 			</span>
 
 			<Dropdown>
@@ -68,7 +68,7 @@ const UserDropdown = () => {
 						Login
 					</Dropdown.Item>
 					<Dropdown.Item as={Link} to="/registration">
-						Register
+						Registrati
 					</Dropdown.Item>
 					{isAdmin && (
 						<Dropdown.Item as={Link} to="/admin">

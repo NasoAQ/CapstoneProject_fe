@@ -52,8 +52,8 @@ const Details = () => {
 									<Card.Text>{travel.content}</Card.Text>
 									<div className="d-flex justify-content-between ">
 										<Card.Text className="text-primary">
-											Price: from{" "}
-											<span className="text-warning-emphasis">
+											A partire da{" "}
+											<span className="text-warning-emphasis fw-semibold">
 												{" "}
 												{travel.price} €
 											</span>
@@ -64,7 +64,7 @@ const Details = () => {
 											variant="outline-warning"
 											className="btn-sm"
 										>
-											Contact us
+											Contattaci
 										</Button>
 										{isAuthenticated ? (
 											<Button
@@ -73,7 +73,7 @@ const Details = () => {
 												variant="light"
 												className="btn-sm"
 											>
-												Leave a testimonial
+												Lascia una recensione.
 											</Button>
 										) : (
 											<Button
@@ -82,7 +82,7 @@ const Details = () => {
 												variant="light"
 												className="btn-sm"
 											>
-												Login to leave a testimonial
+												Login per lasciare una recensione.
 											</Button>
 										)}
 									</div>
