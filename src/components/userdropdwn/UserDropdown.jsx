@@ -21,25 +21,48 @@ const UserDropdown = () => {
 	};
 
 	useEffect(() => {
-		const token = localStorage.getItem("loggedInUser");
+		const fetchAvatarUrl = async () => {
+			const token = localStorage.getItem("loggedInUser");
 
-		if (token) {
-			try {
-				const user = jwtDecode(token);
-				const nickname = user.username;
-				setNickName(nickname);
-				setUser(user);
-				fetch(`${process.env.REACT_APP_SERVER_BASE_URL}/users/${user.id}`)
-					.then(response => response.json())
-					.then(data => {
-						const userAvatar = data.newUser.avatar;
-						setAvatarUrl(userAvatar);
-					});
-				setIsAdmin(user.role === "admin");
-			} catch (error) {
-				console.error("Errore nella codifica token", error);
+			if (token) {
+				try {
+					const user = jwtDecode(token);
+					const nickname = user.username;
+					setNickName(nickname);
+					setUser(user);
+
+					const photos = user.photos || [];
+
+					const savedAvatarUrl = localStorage.getItem("avatar_url");
+					if (savedAvatarUrl) {
+						setAvatarUrl(savedAvatarUrl);
+					} else if (photos.length > 0) {
+						const avatarUrl = photos[0].value;
+						setAvatarUrl(avatarUrl);
+						localStorage.setItem("avatar_url", avatarUrl);
+					} else {
+						const response = await fetch(
+							`${process.env.REACT_APP_SERVER_BASE_URL}/users/${user.id}`
+						);
+						const data = await response.json();
+						const userAvatar = data.newUser && data.newUser.avatar_url;
+
+						if (!userAvatar) {
+							const avatarUrl = photos.length > 0 ? photos[0].value : null;
+							localStorage.setItem("avatar_url", avatarUrl);
+						} else {
+							setAvatarUrl(userAvatar);
+							localStorage.setItem("avatar_url", userAvatar);
+						}
+					}
+					setIsAdmin(user.role === "admin");
+				} catch (error) {
+					console.error("Errore nella codifica token", error);
+				}
 			}
-		}
+		};
+
+		fetchAvatarUrl();
 	}, []);
 
 	return (

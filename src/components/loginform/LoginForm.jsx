@@ -64,9 +64,14 @@ const LoginForm = () => {
 		}
 	};
 
+	const redirectForLoginWithGithub = () => {
+		window.location.href = `${process.env.REACT_APP_SERVER_BASE_URL}/auth/github`;
+	};
+
 	useEffect(() => {
 		let params = new URLSearchParams(document.location.search);
 		const token = params.get("token");
+
 		if (token !== null) {
 			localStorage.setItem("loggedInUser", JSON.stringify(token));
 
@@ -123,6 +128,15 @@ const LoginForm = () => {
 							</Button>
 						</Col>
 					</Form>
+					<Col>
+						<Button
+							onClick={() => redirectForLoginWithGithub()}
+							type="button"
+							className="primary"
+						>
+							Login with github
+						</Button>
+					</Col>
 					<Col>
 						<Link
 							to={"/registration"}
