@@ -66,13 +66,11 @@ const ContactForm = () => {
 
 	const handleDateChange = e => {
 		const selectedDate = e.target.value;
-		// Set the "Al" date to at least three days after the selected "Dal" date
 		const selectedDateObj = new Date(selectedDate);
 		selectedDateObj.setDate(selectedDateObj.getDate() + 3);
 		const formattedFutureDate = selectedDateObj.toISOString().split("T")[0];
 		setDateTwo(formattedFutureDate);
 
-		// Update the "Dal" date
 		setDate(selectedDate);
 	};
 

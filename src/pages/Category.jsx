@@ -4,6 +4,8 @@ import MainLayouts from "../layouts/MainLayouts";
 import TravelCard from "../components/travelcard/TravelCard";
 import Loader from "../components/spinner/Loader";
 import { Col, Container, Row, Form } from "react-bootstrap";
+import ResponsivePagination from "react-responsive-pagination";
+import "react-responsive-pagination/themes/classic.css";
 import "../components/mynavbar/mynav.css";
 
 const Category = () => {
@@ -11,6 +13,13 @@ const Category = () => {
 	const [categoryName, setCategoryName] = useState(initialCategoryName);
 	const [categoryTravels, setCategoryTravels] = useState([]);
 	const [loading, setLoading] = useState(true);
+	const [totalPages, setTotalPages] = useState(0);
+
+	const [currentPage, setCurrentPage] = useState(1);
+
+	const handlePagination = value => {
+		setCurrentPage(value);
+	};
 
 	const fetchCategoryTravels = async () => {
 		setLoading(true);
@@ -20,11 +29,11 @@ const Category = () => {
 
 			if (categoryName) {
 				response = await fetch(
-					`${process.env.REACT_APP_SERVER_BASE_URL}/travels/category/${categoryName}`
+					`${process.env.REACT_APP_SERVER_BASE_URL}/travels/category/${categoryName}?page=${currentPage}`
 				);
 			} else {
 				response = await fetch(
-					`${process.env.REACT_APP_SERVER_BASE_URL}/travels`
+					`${process.env.REACT_APP_SERVER_BASE_URL}/travels?page=${currentPage}`
 				);
 			}
 
@@ -32,6 +41,7 @@ const Category = () => {
 
 			if (data.travels) {
 				setCategoryTravels(data.travels);
+				setTotalPages(data.totalPages);
 			}
 
 			setLoading(false);
@@ -47,7 +57,7 @@ const Category = () => {
 
 	useEffect(() => {
 		fetchCategoryTravels();
-	}, [categoryName]);
+	}, [categoryName, currentPage]);
 
 	return (
 		<MainLayouts>
@@ -80,6 +90,11 @@ const Category = () => {
 						))}
 					</Row>
 				)}
+				<ResponsivePagination
+					current={currentPage}
+					total={totalPages}
+					onPageChange={handlePagination}
+				/>
 			</Container>
 		</MainLayouts>
 	);

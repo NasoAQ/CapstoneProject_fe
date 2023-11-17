@@ -85,7 +85,7 @@ const TravelForm = () => {
 						setTravels(updatedData.travels);
 						setTotalPages(updatedData.totalPages);
 						setAlertVariant("success");
-						setAlertMessage("Travel created successfully!");
+						setAlertMessage("Viaggio inserito con successo!");
 						setShowAlert(true);
 					} else {
 						console.error(

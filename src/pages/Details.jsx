@@ -40,7 +40,7 @@ const Details = () => {
 							{travel.title}
 						</h2>
 						<Col>
-							<Card className="h-100">
+							<Card className="">
 								<Card.Img variant="top" src={travel.cover} alt={travel.title} />
 								<Card.Body>
 									<Card.Subtitle className="mb-2 text-muted">
