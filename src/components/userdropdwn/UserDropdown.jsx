@@ -14,7 +14,7 @@ const UserDropdown = () => {
 	const navigate = useNavigate();
 
 	const handleLogout = () => {
-		localStorage.removeItem("loggedInUser");
+		localStorage.clear();
 		setAvatarUrl(null);
 		setNickName("");
 		navigate("/");
@@ -45,7 +45,7 @@ const UserDropdown = () => {
 							`${process.env.REACT_APP_SERVER_BASE_URL}/users/${user.id}`
 						);
 						const data = await response.json();
-						const userAvatar = data.newUser && data.newUser.avatar_url;
+						const userAvatar = data.newUser && data.newUser.avatar;
 
 						if (!userAvatar) {
 							const avatarUrl = photos.length > 0 ? photos[0].value : null;

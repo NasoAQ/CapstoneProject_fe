@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import { Github } from "react-bootstrap-icons";
 import { jwtDecode } from "jwt-decode";
 import Loader from "../spinner/Loader";
 
@@ -122,7 +123,7 @@ const LoginForm = () => {
 							/>
 							<Form.Control.Feedback>Corretto!</Form.Control.Feedback>
 						</Form.Group>
-						<Col className="my-2 d-flex flex-column">
+						<Col className="mt-2 d-flex flex-column">
 							<Button type="submit" variant="warning">
 								Login
 							</Button>
@@ -132,15 +133,16 @@ const LoginForm = () => {
 						<Button
 							onClick={() => redirectForLoginWithGithub()}
 							type="button"
-							className="primary"
+							variant="dark"
+							className="btn btn-sm"
 						>
-							Login with github
+							<Github /> Login with github
 						</Button>
 					</Col>
 					<Col>
 						<Link
 							to={"/registration"}
-							className="d-flex align-items-center text-xs font-weight-light text-center text-muted"
+							className="my-2 d-flex align-items-center text-xs font-weight-light text-center text-muted"
 						>
 							<span className="ml-2">Non hai un account?</span>
 						</Link>
