@@ -45,6 +45,11 @@ const ContactForm = () => {
 			if (response.ok) {
 				setAlertVariant("success");
 				setAlertMessage("Message sent successfully!");
+				setName("");
+				setEmail("");
+				setDate("");
+				setDateTwo("");
+				setMessage("");
 				setShowAlert(true);
 				setValidated(false);
 			} else {
