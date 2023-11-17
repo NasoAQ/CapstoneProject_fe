@@ -80,7 +80,7 @@ const Category = () => {
 				</h2>
 
 				{loading ? (
-					<Loader /> // Mostra il loader se lo stato di loading è true
+					<Loader />
 				) : (
 					<Row>
 						{categoryTravels.map(travel => (
