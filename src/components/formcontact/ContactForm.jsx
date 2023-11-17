@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Container, Form, Col, Row, Alert } from "react-bootstrap";
 
 const ContactForm = () => {
@@ -64,6 +64,29 @@ const ContactForm = () => {
 		}
 	};
 
+	const handleDateChange = e => {
+		const selectedDate = e.target.value;
+		// Set the "Al" date to at least three days after the selected "Dal" date
+		const selectedDateObj = new Date(selectedDate);
+		selectedDateObj.setDate(selectedDateObj.getDate() + 3);
+		const formattedFutureDate = selectedDateObj.toISOString().split("T")[0];
+		setDateTwo(formattedFutureDate);
+
+		// Update the "Dal" date
+		setDate(selectedDate);
+	};
+
+	useEffect(() => {
+		const currentDate = new Date();
+		const formattedCurrentDate = currentDate.toISOString().split("T")[0];
+		setDate(formattedCurrentDate);
+
+		const futureDate = new Date();
+		futureDate.setDate(currentDate.getDate());
+		const formattedFutureDate = futureDate.toISOString().split("T")[0];
+		setDateTwo(formattedFutureDate);
+	}, []);
+
 	return (
 		<Container
 			id="contact"
@@ -120,7 +143,8 @@ const ContactForm = () => {
 								required
 								type="date"
 								name="date"
-								onChange={e => setDate(e.target.value)}
+								min={date}
+								onChange={handleDateChange}
 							/>
 							<Form.Control.Feedback type="invalid">
 								Inserisci una data valida.
@@ -132,6 +156,7 @@ const ContactForm = () => {
 								required
 								type="date"
 								name="dateTwo"
+								min={dateTwo}
 								onChange={e => setDateTwo(e.target.value)}
 							/>
 							<Form.Control.Feedback type="invalid">
