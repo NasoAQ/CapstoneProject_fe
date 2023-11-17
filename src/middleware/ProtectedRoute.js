@@ -1,13 +1,26 @@
 import { Outlet, Navigate } from "react-router-dom";
 import Login from "../pages/Login";
+import { jwtDecode } from "jwt-decode";
 
 export const isAuth = () => {
-	return JSON.parse(localStorage.getItem("loggedInUser"));
+	return new Promise((resolve, reject) => {
+		const user = JSON.parse(localStorage.getItem("loggedInUser"));
+		if (user) {
+			resolve(user);
+		} else {
+			reject("Utente non autenticato");
+		}
+	});
 };
 
-export const isAdmin = () => {
-	const user = isAuth();
-	return user && user.role === "admin";
+export const isAdmin = async () => {
+	try {
+		const user = await isAuth();
+		return user && user.role === "admin";
+	} catch (error) {
+		console.error("Errore nell'ottenere l'utente autenticato:", error);
+		return false;
+	}
 };
 
 const ProtectedRoutes = () => {
