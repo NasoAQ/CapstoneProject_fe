@@ -82,7 +82,6 @@ const LoginForm = () => {
 				navigate("/admin");
 			} else {
 				navigate("/");
-				navigate("/");
 			}
 		}
 	}, []);

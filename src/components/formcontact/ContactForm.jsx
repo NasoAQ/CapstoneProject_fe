@@ -88,28 +88,27 @@ const ContactForm = () => {
 	return (
 		<Container
 			id="contact"
-			className="sm my-3 py-1 bg-light border-bottom d-flex justify-content-center"
+			className="container-sm my-3 py-1 bg-light border-bottom d-flex justify-content-center"
 		>
 			<Row className="d-flex flex-column justify-content-center align-items-center">
-				<Col className="col-6">
-					<h2 className="text-warning-emphasis fst-italic text-center fontnew fw-semibold">
-						Contattaci
-					</h2>
-					<p className="mb-5 text-warning-emphasis text-center fontnew fs-5 fst-italic">
-						Compila il modulo con le date preferite e le richieste specifiche.
-						Ci metteremo presto in contatto con te per pianificare insieme la
-						tua vacanza da sogno in modo collaborativo.
-					</p>
-				</Col>
+				<h3 className="text-warning-emphasis fst-italic text-center fontnew fw-semibold">
+					Contattaci
+				</h3>
+				<p className="mb-5 text-warning-emphasis text-center fontnew fs-5 fst-italic">
+					Compila il modulo con le date preferite e le richieste specifiche. Ci
+					metteremo presto in contatto con te per pianificare insieme la tua
+					vacanza da sogno in modo collaborativo.
+				</p>
+
 				<Form
 					noValidate
 					validated={validated}
 					data-netlify="true"
 					name="contact"
 					onSubmit={handleSubmit}
-					className="col-6"
+					className="my-3 d-flex flex-column justify-content-center align-items-center"
 				>
-					<Form.Group as={Col} controlId="name" className="mb-4">
+					<Form.Group as={Col} md={6} controlId="name" className="mb-4">
 						<input type="hidden" name="form-name" value="contact" />
 						<Form.Label>Nome</Form.Label>
 						<Form.Control
@@ -122,7 +121,7 @@ const ContactForm = () => {
 							Inserisci un nome.
 						</Form.Control.Feedback>
 					</Form.Group>
-					<Form.Group as={Col} controlId="email" className="mb-4">
+					<Form.Group as={Col} md={6} controlId="email" className="mb-4">
 						<Form.Label>E-mail</Form.Label>
 						<Form.Control
 							required
@@ -135,7 +134,7 @@ const ContactForm = () => {
 						</Form.Control.Feedback>
 					</Form.Group>
 					<Row>
-						<Form.Group as={Col} controlId="date" className="mb-4" md={6}>
+						<Form.Group as={Col} controlId="date" className="mb-4" /* md={6} */>
 							<Form.Label>Dal</Form.Label>
 							<Form.Control
 								required
@@ -148,7 +147,11 @@ const ContactForm = () => {
 								Inserisci una data valida.
 							</Form.Control.Feedback>
 						</Form.Group>
-						<Form.Group as={Col} controlId="dateTwo" className="mb-4" md={6}>
+						<Form.Group
+							as={Col}
+							controlId="dateTwo"
+							className="mb-4" /* md={6} */
+						>
 							<Form.Label>Al</Form.Label>
 							<Form.Control
 								required
@@ -162,7 +165,7 @@ const ContactForm = () => {
 							</Form.Control.Feedback>
 						</Form.Group>
 					</Row>
-					<Form.Group as={Col} controlId="message" className="mb-4">
+					<Form.Group as={Col} md={6} controlId="message" className="mb-4">
 						<Form.Label>Messaggio</Form.Label>
 						<Form.Control
 							required
