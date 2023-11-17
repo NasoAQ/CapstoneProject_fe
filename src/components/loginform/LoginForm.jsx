@@ -77,7 +77,6 @@ const LoginForm = () => {
 			localStorage.setItem("loggedInUser", JSON.stringify(token));
 
 			const decodedToken = jwtDecode(token);
-			console.log("Decoded Token:", decodedToken);
 			if (decodedToken.role === "admin") {
 				console.log("Navigating to /admin");
 				navigate("/admin");
